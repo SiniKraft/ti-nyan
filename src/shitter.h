@@ -19,8 +19,10 @@ typedef struct {
 typedef struct {
     uint8_t length;
     Shitter list[5];
+    uint8_t delay;
 } ShitterList;
 
+extern void ShitterIAStep(ShitterList* sl, uint24_t seconds);
 
 #ifdef __cplusplus
 }

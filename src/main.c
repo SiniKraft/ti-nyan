@@ -68,6 +68,14 @@ int main(void) {
     laser_list.list[0].defined = false;
     laser_list.list[1].defined = false;
     laser_list.list[2].defined = false;
+    ShitterList shitter_list;
+    shitter_list.list[0].defined = false;
+    shitter_list.list[1].defined = false;
+    shitter_list.list[2].defined = false;
+    shitter_list.list[3].defined = false;
+    shitter_list.list[4].defined = false;
+    shitter_list.length = 5;
+    shitter_list.delay = 0;
     char score_str[] = "00000000";
     char deci_score_str[] = "0";
 
@@ -149,6 +157,7 @@ int main(void) {
             for (length = 0; score_str[length] != '\0'; ++length);
             PrintScaled(score_str, 298 - 16*length, 0, 16, false, 1, 0);
             RenderHealth(health_count);
+            ShitterIAStep(&shitter_list, seconds);
         }
 
         if (timer_ChkInterrupt(2, TIMER_RELOADED)) {
