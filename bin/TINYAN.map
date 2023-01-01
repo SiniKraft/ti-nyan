@@ -7,9 +7,9 @@ Section          Base   Top    High   Length
 .init.reruncheck D1AA67 D1AA67             0h
 .init            D1AA67 D1AA91            2Ah
 .fini            D1AA91 D1AAC5            34h
-.text            D1AAC5 D1BB21          105Ch
-.data            D1BB21 D1DD2E          220Dh
-.rodata          D1DD2E D1E5CE           8A0h
+.text            D1AAC5 D1BB20          105Bh
+.data            D1BB20 D1DD2D          220Dh
+.rodata          D1DD2D D1E5CD           8A0h
 .init_array      000000 000000             0h
 .ctors           000000 000000             0h
 .dtors           000000 000000             0h
@@ -50,11 +50,11 @@ _free                                = D1AB3B
 _malloc                              = D1ABF8
 __alloc_base                         = D052C6
 _sbrk                                = D1AC97
-__sbrkbase                           = D1BB21
-.missingappvar                       = D1DD2E
-.libloadname                         = D1DD33
+__sbrkbase                           = D1BB20
+.missingappvar                       = D1DD2D
+.libloadname                         = D1DD32
 .libloadnamelen                      = 000007
-.webaddress                          = D1DD3B
+.webaddress                          = D1DD3A
 __start                              = D1AA67
 ___exithl                            = D1AA91
 skip._exit                           = D1AA91
@@ -63,46 +63,46 @@ skip._abort                          = D1AA91
 _exit.sp                             = D1AA92
 _exit.flash_wait_states              = D1AA9C
 _DrawBackground                      = D1ACB5
-JTI0_0                               = D1DD50
+JTI0_0                               = D1DD4F
 _TryCreateLaser                      = D1AFBA
 _UpdateAndRenderLasers               = D1AFF1
 _main                                = D1B0BB
-_RenderHealth                        = D1B7B2
-_DrawSprite                          = D1B811
-_MainMenu                            = D1B86A
-_PrintScaled                         = D1B9CD
-___const.DrawBackground.len          = D1DD71
-___const.DrawBackground.frame1       = D1DD7D
-___const.DrawBackground.frame2       = D1DE25
-___const.DrawBackground.frame3       = D1DE91
-___const.DrawBackground.frame4       = D1DF45
-___const.DrawBackground.frame5       = D1E011
-___const.DrawBackground.frame6       = D1E0AD
-___const.DrawBackground.frame7       = D1E149
-___const.DrawBackground.frame8       = D1E245
-___const.DrawBackground.frame9       = D1E305
-___const.DrawBackground.frame10      = D1E3C5
-___const.DrawBackground.frame11      = D1E4C1
-_global_palette                      = D1BB24
-___const.main.score_str              = D1E58D
-_health_data                         = D1BB4E
-_DrawSprite.oldX                     = D1BB98
-_DrawSprite.oldY                     = D1BB9B
-_nyancat_1_data                      = D1BB9E
-_nyancat_2_data                      = D1BE6A
-_nyancat_3_data                      = D1C136
-_nyancat_4_data                      = D1C402
-_nyancat_5_data                      = D1C6CE
-_nyancat_6_data                      = D1C99A
-_nyancat_7_data                      = D1CC66
-_nyancat_8_data                      = D1CF32
-_nyancat_9_data                      = D1D1FE
-_nyancat_10_data                     = D1D4CA
-_nyancat_11_data                     = D1D796
-_nyancat_12_data                     = D1DA62
-___const.DrawSprite.nyancat_group    = D1E596
-_.str                                = D1E5BA
-_.str.1                              = D1E5C2
+_RenderHealth                        = D1B7B1
+_DrawSprite                          = D1B810
+_MainMenu                            = D1B869
+_PrintScaled                         = D1B9CC
+___const.DrawBackground.len          = D1DD70
+___const.DrawBackground.frame1       = D1DD7C
+___const.DrawBackground.frame2       = D1DE24
+___const.DrawBackground.frame3       = D1DE90
+___const.DrawBackground.frame4       = D1DF44
+___const.DrawBackground.frame5       = D1E010
+___const.DrawBackground.frame6       = D1E0AC
+___const.DrawBackground.frame7       = D1E148
+___const.DrawBackground.frame8       = D1E244
+___const.DrawBackground.frame9       = D1E304
+___const.DrawBackground.frame10      = D1E3C4
+___const.DrawBackground.frame11      = D1E4C0
+_global_palette                      = D1BB23
+___const.main.score_str              = D1E58C
+_health_data                         = D1BB4D
+_DrawSprite.oldX                     = D1BB97
+_DrawSprite.oldY                     = D1BB9A
+_nyancat_1_data                      = D1BB9D
+_nyancat_2_data                      = D1BE69
+_nyancat_3_data                      = D1C135
+_nyancat_4_data                      = D1C401
+_nyancat_5_data                      = D1C6CD
+_nyancat_6_data                      = D1C999
+_nyancat_7_data                      = D1CC65
+_nyancat_8_data                      = D1CF31
+_nyancat_9_data                      = D1D1FD
+_nyancat_10_data                     = D1D4C9
+_nyancat_11_data                     = D1D795
+_nyancat_12_data                     = D1DA61
+___const.DrawSprite.nyancat_group    = D1E595
+_.str                                = D1E5B9
+_.str.1                              = D1E5C1
 lib.LibLoad                          = D1A9FA
 _#gfx_Begin                          = D1AA0D
 _#gfx_End                            = D1AA11

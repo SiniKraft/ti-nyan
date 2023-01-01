@@ -6,6 +6,7 @@
 #include "main_menu.h"
 #include "utils.h"
 #include "laser.h"
+#include "shitter.h"
 
 #define START_X ((LCD_WIDTH - nyancat_1_width * 2) / 2)
 #define START_Y ((LCD_HEIGHT - nyancat_1_height * 2) / 2)
@@ -63,7 +64,7 @@ int main(void) {
     timer_Enable(2, TIMER_32K, TIMER_0INT, TIMER_DOWN);
     uint8_t health_count = 3;
     LaserList laser_list;
-    laser_list.length = 3;
+    laser_list.length = 2;
     laser_list.list[0].defined = false;
     laser_list.list[1].defined = false;
     laser_list.list[2].defined = false;

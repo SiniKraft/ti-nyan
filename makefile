@@ -4,7 +4,7 @@
 
 NAME = TINYAN
 ICON = icon.png
-DESCRIPTION = "TI NYAN ! (by SiniKraft)"
+DESCRIPTION = "TI-NYAN ! (by SiniKraft)"
 COMPRESSED = YES
 ARCHIVED = YES
 

@@ -660,7 +660,7 @@ _main:
 	lea	hl, ix
 	add	hl, bc
 	ld	iy, (hl)
-	ld	(iy + 44), 3
+	ld	(iy + 44), a
 	ld	(iy + 29), 0
 	ld	(iy + 34), 0
 	ld	(iy + 39), 0
