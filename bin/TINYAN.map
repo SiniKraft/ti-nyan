@@ -1,0 +1,126 @@
+Section          Base   Top    High   Length
+---------------- ------ ------ ------ -------
+.icon            D1A882 D1A9A2           120h
+.init.libs       D1A9A2 D1A9FA            58h
+.libs            D1A9FA D1AA67            6Dh
+.init.clock      D1AA67 D1AA67             0h
+.init.reruncheck D1AA67 D1AA67             0h
+.init            D1AA67 D1AA91            2Ah
+.fini            D1AA91 D1AAC5            34h
+.text            D1AAC5 D1BB21          105Ch
+.data            D1BB21 D1DD2E          220Dh
+.rodata          D1DD2E D1E5CE           8A0h
+.init_array      000000 000000             0h
+.ctors           000000 000000             0h
+.dtors           000000 000000             0h
+.fini_array      000000 000000             0h
+.bss             D052C6 D052CC D13FD8      6h
+.header          D1A87F D1A882             3h
+
+Label                                  Value
+------------------------------------   ------
+___low_bss                           = D052C6
+___len_bss                           = 000006
+___heaptop                           = D13FD8
+___heapbot                           = D052CC
+___libs                              = D1A9FA
+___init_array_count                  = 000000
+___ctors_count                       = 000000
+___dtors_count                       = 000000
+___fini_array_count                  = 000000
+__stack                              = D1A87E
+__frameset                           = D1AAC5
+__frameset0                          = D1AAD3
+__imulu                              = D1AADE
+__ftol                               = 00027C
+__ftoul                              = 00027C
+__ltof                               = 000284
+__setflag                            = 000218
+__ultof                              = 000280
+__sand                               = D1AB0E
+_os_DisableHomeTextBuffer            = D1AB17
+_os_EnableHomeTextBuffer             = D1AB29
+_os_ClrLCD                           = 02080C
+_os_HomeUp                           = 020828
+_os_DrawStatusBar                    = 021A3C
+_os_ThrowError                       = 021C80
+_os_RealToStr                        = 021CB4
+_os_FloatToReal                      = 022170
+_free                                = D1AB3B
+_malloc                              = D1ABF8
+__alloc_base                         = D052C6
+_sbrk                                = D1AC97
+__sbrkbase                           = D1BB21
+.missingappvar                       = D1DD2E
+.libloadname                         = D1DD33
+.libloadnamelen                      = 000007
+.webaddress                          = D1DD3B
+__start                              = D1AA67
+___exithl                            = D1AA91
+skip._exit                           = D1AA91
+skip.__Exit                          = D1AA91
+skip._abort                          = D1AA91
+_exit.sp                             = D1AA92
+_exit.flash_wait_states              = D1AA9C
+_DrawBackground                      = D1ACB5
+JTI0_0                               = D1DD50
+_TryCreateLaser                      = D1AFBA
+_UpdateAndRenderLasers               = D1AFF1
+_main                                = D1B0BB
+_RenderHealth                        = D1B7B2
+_DrawSprite                          = D1B811
+_MainMenu                            = D1B86A
+_PrintScaled                         = D1B9CD
+___const.DrawBackground.len          = D1DD71
+___const.DrawBackground.frame1       = D1DD7D
+___const.DrawBackground.frame2       = D1DE25
+___const.DrawBackground.frame3       = D1DE91
+___const.DrawBackground.frame4       = D1DF45
+___const.DrawBackground.frame5       = D1E011
+___const.DrawBackground.frame6       = D1E0AD
+___const.DrawBackground.frame7       = D1E149
+___const.DrawBackground.frame8       = D1E245
+___const.DrawBackground.frame9       = D1E305
+___const.DrawBackground.frame10      = D1E3C5
+___const.DrawBackground.frame11      = D1E4C1
+_global_palette                      = D1BB24
+___const.main.score_str              = D1E58D
+_health_data                         = D1BB4E
+_DrawSprite.oldX                     = D1BB98
+_DrawSprite.oldY                     = D1BB9B
+_nyancat_1_data                      = D1BB9E
+_nyancat_2_data                      = D1BE6A
+_nyancat_3_data                      = D1C136
+_nyancat_4_data                      = D1C402
+_nyancat_5_data                      = D1C6CE
+_nyancat_6_data                      = D1C99A
+_nyancat_7_data                      = D1CC66
+_nyancat_8_data                      = D1CF32
+_nyancat_9_data                      = D1D1FE
+_nyancat_10_data                     = D1D4CA
+_nyancat_11_data                     = D1D796
+_nyancat_12_data                     = D1DA62
+___const.DrawSprite.nyancat_group    = D1E596
+_.str                                = D1E5BA
+_.str.1                              = D1E5C2
+lib.LibLoad                          = D1A9FA
+_#gfx_Begin                          = D1AA0D
+_#gfx_End                            = D1AA11
+_#gfx_SetColor                       = D1AA15
+_#gfx_SetPalette                     = D1AA19
+_#gfx_FillScreen                     = D1AA1D
+_#gfx_SetDraw                        = D1AA21
+_#gfx_Blit                           = D1AA25
+_#gfx_SetTextBGColor                 = D1AA29
+_#gfx_SetTextFGColor                 = D1AA2D
+_#gfx_FillRectangle_NoClip           = D1AA31
+_#gfx_AllocSprite                    = D1AA35
+_#gfx_Sprite                         = D1AA39
+_#gfx_TransparentSprite_NoClip       = D1AA3D
+_#gfx_GetSprite                      = D1AA41
+_#gfx_ScaledTransparentSprite_NoClip = D1AA45
+_#gfx_SetTransparentColor            = D1AA49
+_#gfx_GetSpriteChar                  = D1AA4D
+_#gfx_ScaleSprite                    = D1AA51
+_#kb_Scan                            = D1AA5F
+_#kb_AnyKey                          = D1AA63

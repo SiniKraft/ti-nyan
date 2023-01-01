@@ -1,0 +1,63 @@
+palettes:
+  - name: global_palette
+    max-entries: 255
+    fixed-entries:
+      - color: { index: 0, r: 17, g: 0, b: 255 }
+      - color: { index: 1, r: 255, g: 255, b: 255 }
+      - color: { index: 2, r: 156, g: 154, b: 156 }
+      - color: { index: 3, r: 255, g: 202, b: 156 }
+      - color: { index: 4, r: 255, g: 154, b: 255 }
+      - color: { index: 5, r: 255, g: 53, b: 156 }
+      - color: { index: 6, r: 255, g: 154, b: 156 }
+      - color: { index: 7, r: 0, g: 0, b: 0 }
+      - color: { index: 8, r: 255, g: 0, b: 0 }
+      - color: { index: 9, r: 255, g: 153, b: 0 }
+      - color: { index: 10, r: 255, g: 255, b: 0 }
+      - color: { index: 11, r: 51, g: 255, b: 0 }
+      - color: { index: 12, r: 0, g: 153, b: 255 }
+      - color: { index: 13, r: 102, g: 51, b: 255 }
+      - color: { index: 14, r: 4, g: 50, b: 100 }
+      - color: { index: 15, r: 175, g: 9, b: 9 }
+      - color: { index: 16, r: 162, g: 12, b: 13 }
+      - color: { index: 17, r: 115, g: 77, b: 38 }
+      - color: { index: 18, r: 127, g: 83, b: 38 }
+      - color: { index: 19, r: 107, g: 71, b: 35 }
+    images: automatic
+
+converts:
+  - name: sprites
+    palette: global_palette
+    transparent-color-index: 0
+    images:
+      - nyancat_1.png
+      - nyancat_2.png
+      - nyancat_3.png
+      - nyancat_4.png
+      - nyancat_5.png
+      - nyancat_6.png
+      - nyancat_7.png
+      - nyancat_8.png
+      - nyancat_9.png
+      - nyancat_10.png
+      - nyancat_11.png
+      - nyancat_12.png
+      - rainbow.png
+      - T.png
+      - H.png
+      - E.png
+      - N.png
+      - Y.png
+      - A.png
+      - C.png
+      - G.png
+      - M.png
+      - health.png
+      - shit.png
+
+outputs:
+  - type: c
+    include-file: gfx.h
+    palettes:
+      - global_palette
+    converts:
+      - sprites

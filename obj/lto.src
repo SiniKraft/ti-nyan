@@ -1,0 +1,2705 @@
+	section	.text,"ax",@progbits
+	assume	adl = 1
+	section	.text,"ax",@progbits
+	public	_DrawBackground
+_DrawBackground:
+	ld	hl, -6
+	call	__frameset
+	ld	hl, 1
+	push	hl
+	call	_gfx_SetColor
+	pop	hl
+	push	af
+	ld	a, (ix + 6)
+	ld	iyl, a
+	pop	af
+	ld	a, iyl
+	add	a, -2
+	ld	de, 0
+	cp	a, 11
+	jr	c, BB0_4
+	ld	hl, ___const.DrawBackground.len
+	ld	bc, ___const.DrawBackground.frame1+6
+	ld	e, iyl
+	add	hl, de
+	push	hl
+	pop	iy
+	or	a, a
+	sbc	hl, hl
+	ld	l, (iy)
+BB0_2:
+	add	hl, bc
+	or	a, a
+	sbc	hl, bc
+	jp	z, BB0_25
+	push	bc
+	pop	iy
+	ld	de, (iy - 6)
+	ld	(ix - 3), de
+	ld	a, (iy - 3)
+	ld	(ix - 6), hl
+	ld	de, (iy)
+	ld	c, (iy + 3)
+	push	bc
+	push	de
+	ld	e, a
+	push	de
+	ld	hl, (ix - 3)
+	push	hl
+	ld	(ix - 3), iy
+	call	_gfx_FillRectangle_NoClip
+	ld	hl, (ix - 6)
+	ld	iy, (ix - 3)
+	pop	de
+	pop	de
+	pop	de
+	pop	de
+	lea	iy, iy + 12
+	lea	bc, iy
+	dec	hl
+	jr	BB0_2
+BB0_4:
+	ld	e, a
+	ld	hl, JTI0_0
+	add	hl, de
+	add	hl, de
+	add	hl, de
+	ld	hl, (hl)
+	ld	iy, 0
+	jp	(hl)
+BB0_5:
+	lea	de, iy
+	ld	(ix - 3), iy
+	ld	iy, ___const.DrawBackground.frame2
+	add	iy, de
+	ld	hl, (iy)
+	ld	a, (iy + 3)
+	ld	de, (iy + 6)
+	ld	c, (iy + 9)
+	push	bc
+	push	de
+	ld	e, a
+	push	de
+	push	hl
+	call	_gfx_FillRectangle_NoClip
+	ld	hl, 12
+	ex	de, hl
+	ld	iy, (ix - 3)
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	add	iy, de
+BB0_6:
+	ld	de, 180
+	lea	hl, iy
+	or	a, a
+	sbc	hl, de
+	jp	z, BB0_25
+	jr	BB0_5
+BB0_7:
+	lea	de, iy
+	ld	(ix - 3), iy
+	ld	iy, ___const.DrawBackground.frame3
+	add	iy, de
+	ld	hl, (iy)
+	ld	a, (iy + 3)
+	ld	de, (iy + 6)
+	ld	c, (iy + 9)
+	push	bc
+	push	de
+	ld	e, a
+	push	de
+	push	hl
+	call	_gfx_FillRectangle_NoClip
+	ld	hl, 12
+	ex	de, hl
+	ld	iy, (ix - 3)
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	add	iy, de
+BB0_8:
+	ld	de, 204
+	lea	hl, iy
+	or	a, a
+	sbc	hl, de
+	jp	z, BB0_25
+	jr	BB0_7
+BB0_9:
+	lea	de, iy
+	ld	(ix - 3), iy
+	ld	iy, ___const.DrawBackground.frame4
+	add	iy, de
+	ld	hl, (iy)
+	ld	a, (iy + 3)
+	ld	de, (iy + 6)
+	ld	c, (iy + 9)
+	push	bc
+	push	de
+	ld	e, a
+	push	de
+	push	hl
+	call	_gfx_FillRectangle_NoClip
+	ld	hl, 12
+	ex	de, hl
+	ld	iy, (ix - 3)
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	add	iy, de
+BB0_10:
+	ld	de, 156
+	lea	hl, iy
+	or	a, a
+	sbc	hl, de
+	jp	z, BB0_25
+	jr	BB0_9
+BB0_11:
+	lea	de, iy
+	ld	(ix - 3), iy
+	ld	iy, ___const.DrawBackground.frame5
+	add	iy, de
+	ld	hl, (iy)
+	ld	a, (iy + 3)
+	ld	de, (iy + 6)
+	ld	c, (iy + 9)
+	push	bc
+	push	de
+	ld	e, a
+	push	de
+	push	hl
+	call	_gfx_FillRectangle_NoClip
+	ld	hl, 12
+	ex	de, hl
+	ld	iy, (ix - 3)
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	add	iy, de
+BB0_12:
+	ld	de, 156
+	lea	hl, iy
+	or	a, a
+	sbc	hl, de
+	jp	z, BB0_25
+	jr	BB0_11
+BB0_13:
+	lea	de, iy
+	ld	(ix - 3), iy
+	ld	iy, ___const.DrawBackground.frame6
+	add	iy, de
+	ld	hl, (iy)
+	ld	a, (iy + 3)
+	ld	de, (iy + 6)
+	ld	c, (iy + 9)
+	push	bc
+	push	de
+	ld	e, a
+	push	de
+	push	hl
+	call	_gfx_FillRectangle_NoClip
+	ld	hl, 12
+	ex	de, hl
+	ld	iy, (ix - 3)
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	add	iy, de
+BB0_14:
+	ld	de, 252
+	lea	hl, iy
+	or	a, a
+	sbc	hl, de
+	jp	z, BB0_25
+	jr	BB0_13
+BB0_15:
+	lea	de, iy
+	ld	(ix - 3), iy
+	ld	iy, ___const.DrawBackground.frame7
+	add	iy, de
+	ld	hl, (iy)
+	ld	a, (iy + 3)
+	ld	de, (iy + 6)
+	ld	c, (iy + 9)
+	push	bc
+	push	de
+	ld	e, a
+	push	de
+	push	hl
+	call	_gfx_FillRectangle_NoClip
+	ld	hl, 12
+	ex	de, hl
+	ld	iy, (ix - 3)
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	add	iy, de
+BB0_16:
+	ld	de, 192
+	lea	hl, iy
+	or	a, a
+	sbc	hl, de
+	jp	z, BB0_25
+	jr	BB0_15
+BB0_17:
+	lea	de, iy
+	ld	(ix - 3), iy
+	ld	iy, ___const.DrawBackground.frame8
+	add	iy, de
+	ld	hl, (iy)
+	ld	a, (iy + 3)
+	ld	de, (iy + 6)
+	ld	c, (iy + 9)
+	push	bc
+	push	de
+	ld	e, a
+	push	de
+	push	hl
+	call	_gfx_FillRectangle_NoClip
+	ld	hl, 12
+	ex	de, hl
+	ld	iy, (ix - 3)
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	add	iy, de
+BB0_18:
+	ld	de, 192
+	lea	hl, iy
+	or	a, a
+	sbc	hl, de
+	jp	z, BB0_25
+	jr	BB0_17
+BB0_19:
+	lea	de, iy
+	ld	(ix - 3), iy
+	ld	iy, ___const.DrawBackground.frame9
+	add	iy, de
+	ld	hl, (iy)
+	ld	a, (iy + 3)
+	ld	de, (iy + 6)
+	ld	c, (iy + 9)
+	push	bc
+	push	de
+	ld	e, a
+	push	de
+	push	hl
+	call	_gfx_FillRectangle_NoClip
+	ld	hl, 12
+	ex	de, hl
+	ld	iy, (ix - 3)
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	add	iy, de
+BB0_20:
+	ld	de, 252
+	lea	hl, iy
+	or	a, a
+	sbc	hl, de
+	jr	z, BB0_25
+	jr	BB0_19
+BB0_21:
+	lea	de, iy
+	ld	(ix - 3), iy
+	ld	iy, ___const.DrawBackground.frame10
+	add	iy, de
+	ld	hl, (iy)
+	ld	a, (iy + 3)
+	ld	de, (iy + 6)
+	ld	c, (iy + 9)
+	push	bc
+	push	de
+	ld	e, a
+	push	de
+	push	hl
+	call	_gfx_FillRectangle_NoClip
+	ld	hl, 12
+	ex	de, hl
+	ld	iy, (ix - 3)
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	add	iy, de
+BB0_22:
+	ld	de, 204
+	lea	hl, iy
+	or	a, a
+	sbc	hl, de
+	jr	z, BB0_25
+	jr	BB0_21
+BB0_23:
+	lea	de, iy
+	ld	(ix - 3), iy
+	ld	iy, ___const.DrawBackground.frame11
+	add	iy, de
+	ld	hl, (iy)
+	ld	a, (iy + 3)
+	ld	de, (iy + 6)
+	ld	c, (iy + 9)
+	push	bc
+	push	de
+	ld	e, a
+	push	de
+	push	hl
+	call	_gfx_FillRectangle_NoClip
+	ld	hl, 12
+	ex	de, hl
+	ld	iy, (ix - 3)
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	add	iy, de
+BB0_24:
+	ld	de, 144
+	lea	hl, iy
+	or	a, a
+	sbc	hl, de
+	jr	nz, BB0_23
+BB0_25:
+	ld	sp, ix
+	pop	ix
+	ret
+	section	.text,"ax",@progbits
+	section	.rodata,"a",@progbits
+	private	JTI0_0
+JTI0_0:
+	dl	BB0_6
+	dl	BB0_8
+	dl	BB0_10
+	dl	BB0_12
+	dl	BB0_14
+	dl	BB0_16
+	dl	BB0_18
+	dl	BB0_20
+	dl	BB0_22
+	dl	BB0_24
+	dl	BB0_25
+
+	section	.text,"ax",@progbits
+	public	_TryCreateLaser
+_TryCreateLaser:
+	call	__frameset0
+	ld	de, (ix + 6)
+	ld	a, (ix + 9)
+	ld	iy, (ix + 12)
+	or	a, a
+	sbc	hl, hl
+	lea	bc, iy
+	ld	l, (iy + 15)
+	inc	hl
+BB1_1:
+	push	bc
+	pop	iy
+	dec	hl
+	add	hl, bc
+	or	a, a
+	sbc	hl, bc
+	jr	z, BB1_4
+	lea	bc, iy + 5
+	bit	0, (iy)
+	jr	nz, BB1_1
+	ld	(iy), 1
+	ld	(iy + 1), de
+	ld	(iy + 4), a
+BB1_4:
+	pop	ix
+	ret
+	section	.text,"ax",@progbits
+
+	section	.text,"ax",@progbits
+	public	_UpdateAndRenderLasers
+_UpdateAndRenderLasers:
+	ld	hl, -6
+	call	__frameset
+	ld	iy, (ix + 6)
+	ld	bc, 0
+BB2_1:
+	ld	(ix - 3), iy
+	ld	de, 0
+	ld	iy, (ix + 6)
+	ld	e, (iy + 15)
+	push	bc
+	pop	hl
+	or	a, a
+	sbc	hl, de
+	jp	nc, BB2_6
+	ld	(ix - 6), bc
+	ld	iy, (ix - 3)
+	bit	0, (iy)
+	jp	z, BB2_5
+	ld	hl, 14
+	push	hl
+	ld	(ix - 3), iy
+	call	_gfx_SetColor
+	pop	hl
+	ld	iy, (ix - 3)
+	ld	hl, (iy + 1)
+	ld	de, -7
+	add	hl, de
+	ld	iy, (ix - 3)
+	ld	a, (iy + 4)
+	ld	de, 2
+	push	de
+	ld	de, 15
+	push	de
+	ld	e, a
+	push	de
+	push	hl
+	call	_gfx_FillRectangle_NoClip
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	ld	hl, 8
+	push	hl
+	call	_gfx_SetColor
+	pop	hl
+	ld	iy, (ix - 3)
+	ld	hl, (iy + 1)
+	ld	iy, (ix - 3)
+	ld	a, (iy + 4)
+	ld	de, 2
+	push	de
+	ld	de, 15
+	push	de
+	ld	e, a
+	push	de
+	push	hl
+	call	_gfx_FillRectangle_NoClip
+	ld	bc, 7
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	ld	iy, (ix - 3)
+	ld	de, (iy + 1)
+	push	de
+	pop	hl
+	add	hl, bc
+	ld	iy, (ix - 3)
+	ld	(iy + 1), hl
+	ex	de, hl
+	ld	de, -302
+	add	hl, de
+	ld	iy, (ix - 3)
+	ld	de, -321
+	or	a, a
+	sbc	hl, de
+	jr	nc, BB2_5
+	ld	(iy), 0
+BB2_5:
+	ld	bc, (ix - 6)
+	inc	bc
+	lea	iy, iy + 5
+	jp	BB2_1
+BB2_6:
+	ld	sp, ix
+	pop	ix
+	ret
+	section	.text,"ax",@progbits
+
+	section	.text,"ax",@progbits
+	public	_main
+_main:
+	ld	hl, -2953
+	call	__frameset
+	ld	de, -2915
+	lea	iy, ix
+	add	iy, de
+	ld	bc, -917456
+	xor	a, a
+	lea	hl, iy + 51
+	lea	de, iy
+	ld	(ix - 3), de
+	ld	de, -2927
+	lea	iy, ix
+	add	iy, de
+	ld	(iy), hl
+	push	bc
+	pop	iy
+	ld	l, (iy)
+	ld	h, (iy + 1)
+	ld.sis	bc, -2
+	call	__sand
+	ld	(iy), l
+	ld	(iy + 1), h
+	ld	l, (iy)
+	ld	h, (iy + 1)
+	ld.sis	bc, -9
+	call	__sand
+	ld	(iy), l
+	ld	(iy + 1), h
+	ld	hl, 2184
+	ld	(-917504), hl
+	ld	(-917501), a
+	ld	(-917500), hl
+	ld	(-917497), a
+	ld	hl, 3276
+	ld	(-917488), hl
+	ld	(-917485), a
+	ld	(-917484), hl
+	ld	(-917481), a
+	ld	de, (ix - 3)
+	push	de
+	pop	iy
+	ld	de, -2918
+	lea	hl, ix
+	add	hl, de
+	ld	(hl), iy
+	ld	(iy + 51), 68
+	ld	(iy + 52), 42
+	ld	hl, 126
+	ld	(iy + 48), hl
+	ld	hl, 99
+	ld	(iy + 45), hl
+	call	_gfx_Begin
+	or	a, a
+	sbc	hl, hl
+	push	hl
+	ld	hl, 42
+	push	hl
+	ld	hl, _global_palette
+	push	hl
+	call	_gfx_SetPalette
+	pop	hl
+	pop	hl
+	pop	hl
+	or	a, a
+	sbc	hl, hl
+	push	hl
+	call	_gfx_SetTransparentColor
+	pop	hl
+	ld	hl, 1
+	push	hl
+	call	_gfx_SetDraw
+	pop	hl
+	ld	hl, 14
+	push	hl
+	call	_gfx_FillScreen
+	pop	hl
+	ld	hl, 1
+	push	hl
+	call	_gfx_SetColor
+	pop	hl
+	ld	hl, 1
+	push	hl
+	ld	bc, -2918
+	lea	hl, ix
+	add	hl, bc
+	ld	iy, (hl)
+	pea	iy + 45
+	pea	iy + 48
+	ld	bc, -2927
+	lea	iy, ix
+	add	iy, bc
+	ld	hl, (iy)
+	push	hl
+	call	_MainMenu
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	bit	0, a
+	jp	z, BB3_46
+	ld	a, 1
+	ld	bc, -2918
+	lea	hl, ix
+	add	hl, bc
+	ld	iy, (hl)
+	lea	hl, iy + 29
+	push	ix
+	ld	bc, -2938
+	add	ix, bc
+	ld	(ix), hl
+	pop	ix
+	lea	de, iy + 20
+	lea	hl, iy + 18
+	push	ix
+	ld	bc, -2941
+	add	ix, bc
+	ld	(ix), hl
+	pop	ix
+	lea	hl, iy + 9
+	push	ix
+	ld	bc, -2944
+	add	ix, bc
+	ld	(ix), hl
+	pop	ix
+	lea	hl, iy
+	ld	bc, -2947
+	lea	iy, ix
+	add	iy, bc
+	ld	(iy), hl
+	ld	hl, -917456
+	push	de
+	ld	e, (hl)
+	inc	hl
+	ld	d, (hl)
+	ld	l, e
+	ld	h, d
+	pop	de
+	ld.sis	bc, -1081
+	call	__sand
+	ld.sis	bc, 56
+	add.sis	hl, bc
+	ld	iy, -917456
+	ld	(iy), l
+	ld	(iy + 1), h
+	ld	bc, -2918
+	lea	hl, ix
+	add	hl, bc
+	ld	iy, (hl)
+	ld	(iy + 44), 3
+	ld	(iy + 29), 0
+	ld	(iy + 34), 0
+	ld	(iy + 39), 0
+	push	ix
+	ld	bc, -2930
+	add	ix, bc
+	ld	(ix), de
+	pop	ix
+	ld	hl, ___const.main.score_str
+	ld	bc, 9
+	ldir
+	ld.sis	hl, 48
+	ld	(iy + 18), l
+	ld	(iy + 19), h
+	ld	hl, 99
+	ld	bc, -2918
+	lea	iy, ix
+	add	iy, bc
+	ld	(iy), hl
+	ld	hl, 126
+	push	ix
+	ld	bc, -2921
+	add	ix, bc
+	ld	(ix), hl
+	pop	ix
+	ld	l, h
+	ld	e, l
+	ld	bc, 0
+	ld	(ix - 3), de
+	push	ix
+	ld	de, -2933
+	add	ix, de
+	ld	(ix), bc
+	pop	ix
+	push	ix
+	ld	bc, -2934
+	add	ix, bc
+	ld	(ix), l
+	pop	ix
+	ld	l, a
+	push	ix
+	ld	bc, -2924
+	add	ix, bc
+	ld	(ix), hl
+	pop	ix
+	ld	de, (ix - 3)
+BB3_2:
+	ld	bc, -2935
+	lea	hl, ix
+	add	hl, bc
+	ld	(hl), e
+	call	_kb_Scan
+	ld	hl, -720866
+	ld	e, (hl)
+	inc	hl
+	ld	d, (hl)
+	ld	a, e
+	or	a, a
+	jr	nz, BB3_4
+	ld	iy, -917452
+	jp	BB3_26
+BB3_4:
+	ld	a, e
+	and	a, 6
+	ld	iyl, a
+	ld	l, e
+	ld	h, d
+	ld.sis	bc, 1
+	call	__sand
+	ld	(ix - 3), bc
+	push	ix
+	ld	bc, -2950
+	add	ix, bc
+	ld	(ix), hl
+	pop	ix
+	ld	a, e
+	and	a, 9
+	or	a, a
+	ld	l, -1
+	ld	bc, (ix - 3)
+	jr	z, BB3_6
+	ld	l, 0
+BB3_6:
+	ld	a, iyl
+	or	a, a
+	ld	c, -1
+	jr	z, BB3_8
+	ld	c, 0
+BB3_8:
+	ld	a, l
+	or	a, c
+	bit	0, a
+	ld	iy, 4
+	jr	nz, BB3_10
+	ld	iy, 3
+BB3_10:
+	ld	a, e
+	bit	2, a
+	ld	bc, 0
+	jr	z, BB3_12
+	lea	bc, iy
+BB3_12:
+	ld	a, e
+	ld	(ix - 3), de
+	ld	de, -2921
+	lea	hl, ix
+	add	hl, de
+	ld	hl, (hl)
+	add	hl, bc
+	bit	1, a
+	ld	bc, 0
+	ld	de, (ix - 3)
+	jr	z, BB3_14
+	lea	bc, iy
+BB3_14:
+	or	a, a
+	sbc	hl, bc
+	push	ix
+	ld	bc, -2953
+	add	ix, bc
+	ld	(ix), hl
+	pop	ix
+	push	ix
+	ld	bc, -2950
+	add	ix, bc
+	ld	hl, (ix)
+	pop	ix
+	bit	0, l
+	ld	hl, 0
+	push	hl
+	pop	bc
+	jr	z, BB3_16
+	lea	bc, iy
+BB3_16:
+	ld	a, e
+	ld	de, -2918
+	lea	hl, ix
+	add	hl, de
+	ld	hl, (hl)
+	add	hl, bc
+	bit	3, a
+	ld	de, 0
+	jr	z, BB3_18
+	lea	de, iy
+BB3_18:
+	or	a, a
+	sbc	hl, de
+	push	ix
+	ld	de, -2950
+	add	ix, de
+	ld	(ix), hl
+	pop	ix
+	ld	hl, 253
+	lea	bc, iy
+	or	a, a
+	sbc	hl, bc
+	push	ix
+	ld	bc, -2921
+	add	ix, bc
+	ld	(ix), hl
+	pop	ix
+	push	ix
+	ld	bc, -2953
+	add	ix, bc
+	ld	de, (ix)
+	pop	ix
+	push	de
+	pop	hl
+	ld	bc, 253
+	or	a, a
+	sbc	hl, bc
+	call	pe, __setflag
+	jp	p, BB3_20
+	ld	bc, -2921
+	lea	hl, ix
+	add	hl, bc
+	ld	(hl), de
+BB3_20:
+	ld	hl, 199
+	lea	bc, iy
+	or	a, a
+	sbc	hl, bc
+	ld	bc, -2918
+	lea	iy, ix
+	add	iy, bc
+	ld	(iy), hl
+	push	ix
+	ld	bc, -2950
+	add	ix, bc
+	ld	de, (ix)
+	pop	ix
+	push	de
+	pop	hl
+	ld	bc, 199
+	or	a, a
+	sbc	hl, bc
+	call	pe, __setflag
+	jp	p, BB3_22
+	ld	bc, -2918
+	lea	hl, ix
+	add	hl, bc
+	ld	(hl), de
+BB3_22:
+	ld	bc, -2921
+	lea	hl, ix
+	add	hl, bc
+	ld	hl, (hl)
+	ld	de, 1
+	or	a, a
+	sbc	hl, de
+	call	pe, __setflag
+	ld	iy, -917452
+	jp	p, BB3_24
+	or	a, a
+	sbc	hl, hl
+	push	ix
+	ld	bc, -2921
+	add	ix, bc
+	ld	(ix), hl
+	pop	ix
+BB3_24:
+	ld	bc, -2918
+	lea	hl, ix
+	add	hl, bc
+	ld	hl, (hl)
+	ld	de, 1
+	or	a, a
+	sbc	hl, de
+	call	pe, __setflag
+	jp	p, BB3_26
+	or	a, a
+	sbc	hl, hl
+	push	ix
+	ld	bc, -2918
+	add	ix, bc
+	ld	(ix), hl
+	pop	ix
+BB3_26:
+	ld	hl, -720878
+	push	de
+	ld	e, (hl)
+	inc	hl
+	ld	d, (hl)
+	ld	l, e
+	ld	h, d
+	pop	de
+	ld	a, l
+	cp	a, 32
+	ld	a, 0
+	jr	nz, BB3_29
+	ld	bc, -2935
+	lea	hl, ix
+	add	hl, bc
+	ld	l, (hl)
+	ld	a, l
+	and	a, 1
+	bit	0, a
+	ld	a, l
+	jr	nz, BB3_29
+	ld	bc, -2921
+	lea	hl, ix
+	add	hl, bc
+	ld	hl, (hl)
+	ld	de, 50
+	add	hl, de
+	ld	bc, -2918
+	lea	iy, ix
+	add	iy, bc
+	ld	de, (iy)
+	ld	a, e
+	add	a, 30
+	ld	e, a
+	ld	(ix - 3), de
+	push	ix
+	ld	de, -2938
+	add	ix, de
+	ld	bc, (ix)
+	pop	ix
+	push	bc
+	ld	de, (ix - 3)
+	push	de
+	push	hl
+	call	_TryCreateLaser
+	ld	iy, -917452
+	pop	hl
+	pop	hl
+	pop	hl
+	ld	a, 1
+BB3_29:
+	ld	bc, -2935
+	lea	hl, ix
+	add	hl, bc
+	ld	(hl), a
+	ld	l, (iy)
+	ld	h, (iy + 1)
+	ld	a, l
+	bit	2, a
+	jp	z, BB3_35
+	ld	hl, 14
+	push	hl
+	call	_gfx_FillScreen
+	pop	hl
+	ld.sis	hl, 4
+	ld	iy, -917452
+	ld	(iy), l
+	ld	(iy + 1), h
+	ld	bc, 0
+	ld	de, -2934
+	lea	hl, ix
+	add	hl, de
+	ld	c, (hl)
+	xor	a, a
+	call	__ultof
+	ld	l, a
+	push	hl
+	push	bc
+	ld	bc, -2944
+	lea	hl, ix
+	add	hl, bc
+	ld	hl, (hl)
+	push	hl
+	call	_os_FloatToReal
+	pop	hl
+	pop	hl
+	pop	hl
+	or	a, a
+	sbc	hl, hl
+	push	hl
+	inc	hl
+	push	hl
+	push	hl
+	ld	bc, -2944
+	lea	hl, ix
+	add	hl, bc
+	ld	hl, (hl)
+	push	hl
+	ld	bc, -2941
+	lea	hl, ix
+	add	hl, bc
+	ld	hl, (hl)
+	push	hl
+	call	_os_RealToStr
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	ld	de, -2933
+	lea	hl, ix
+	add	hl, de
+	ld	bc, (hl)
+	xor	a, a
+	call	__ultof
+	ld	l, a
+	push	hl
+	push	bc
+	ld	bc, -2947
+	lea	hl, ix
+	add	hl, bc
+	ld	hl, (hl)
+	push	hl
+	call	_os_FloatToReal
+	pop	hl
+	pop	hl
+	pop	hl
+	or	a, a
+	sbc	hl, hl
+	push	hl
+	inc	hl
+	push	hl
+	ld	hl, 9
+	push	hl
+	ld	bc, -2947
+	lea	hl, ix
+	add	hl, bc
+	ld	hl, (hl)
+	push	hl
+	ld	bc, -2930
+	lea	hl, ix
+	add	hl, bc
+	ld	hl, (hl)
+	push	hl
+	call	_os_RealToStr
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	ld	hl, 14
+	push	hl
+	call	_gfx_SetColor
+	pop	hl
+	ld	hl, 16
+	push	hl
+	push	hl
+	or	a, a
+	sbc	hl, hl
+	push	hl
+	ld	hl, 304
+	push	hl
+	call	_gfx_FillRectangle_NoClip
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	or	a, a
+	sbc	hl, hl
+	push	hl
+	ld	de, 1
+	push	de
+	push	hl
+	ld	de, 16
+	push	de
+	push	hl
+	ld	hl, 304
+	push	hl
+	ld	bc, -2941
+	lea	hl, ix
+	add	hl, bc
+	ld	hl, (hl)
+	push	hl
+	call	_PrintScaled
+	ld	hl, 21
+	add	hl, sp
+	ld	sp, hl
+	ld	hl, 1
+	push	hl
+	call	_gfx_SetColor
+	pop	hl
+	ld	hl, 4
+	push	hl
+	push	hl
+	ld	hl, 10
+	push	hl
+	ld	hl, 298
+	push	hl
+	call	_gfx_FillRectangle_NoClip
+	ld	bc, 0
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	ld	l, b
+BB3_31:
+	push	bc
+	pop	de
+	ld	e, l
+	ld	(ix - 3), bc
+	ld	bc, -2930
+	lea	iy, ix
+	add	iy, bc
+	ld	iy, (iy)
+	add	iy, de
+	inc	l
+	ld	a, (iy)
+	or	a, a
+	ld	bc, (ix - 3)
+	jr	nz, BB3_31
+	ld	bc, -2924
+	lea	hl, ix
+	add	hl, bc
+	ld	hl, (hl)
+	inc	l
+	ld	a, l
+	cp	a, 13
+	ld	a, 1
+	jr	z, BB3_34
+	ld	a, l
+BB3_34:
+	ld	bc, -2924
+	lea	hl, ix
+	add	hl, bc
+	ld	(hl), a
+	ex	de, hl
+	ld	bc, -16
+	call	__imulu
+	ld	de, 298
+	add	hl, de
+	ld	de, 0
+	push	de
+	ld	bc, 1
+	push	bc
+	push	de
+	ld	bc, 16
+	push	bc
+	push	de
+	push	hl
+	ld	bc, -2930
+	lea	hl, ix
+	add	hl, bc
+	ld	hl, (hl)
+	push	hl
+	call	_PrintScaled
+	ld	hl, 21
+	add	hl, sp
+	ld	sp, hl
+	ld	hl, 3
+	push	hl
+	call	_RenderHealth
+	pop	hl
+	ld	bc, -2924
+	lea	hl, ix
+	add	hl, bc
+	ld	l, (hl)
+	lea	iy, ix
+	add	iy, bc
+	ld	(iy), hl
+	ld	iy, -917452
+BB3_35:
+	ld	l, (iy)
+	ld	h, (iy + 1)
+	ld	a, l
+	bit	5, a
+	jr	z, BB3_45
+	ld	de, -2934
+	lea	hl, ix
+	add	hl, de
+	ld	a, (hl)
+	inc	a
+	ld	c, a
+	cp	a, 10
+	ld	a, -1
+	jr	z, BB3_38
+	ld	a, 0
+BB3_38:
+	ld	de, -2933
+	lea	hl, ix
+	add	hl, de
+	ld	hl, (hl)
+	ld	de, 1
+	add	hl, de
+	ld	de, -1
+	jr	c, BB3_40
+	ex	de, hl
+BB3_40:
+	bit	0, a
+	jr	nz, BB3_42
+	ld	(ix - 3), bc
+	ld	bc, -2933
+	lea	hl, ix
+	add	hl, bc
+	ld	de, (hl)
+	ld	bc, (ix - 3)
+BB3_42:
+	bit	0, a
+	ld	a, 0
+	jr	nz, BB3_44
+	ld	a, c
+BB3_44:
+	ld.sis	hl, 32
+	ld	(iy), l
+	ld	(iy + 1), h
+	ld	bc, -2933
+	lea	hl, ix
+	add	hl, bc
+	ld	(hl), de
+	dec	bc
+	lea	iy, ix
+	add	iy, bc
+	ld	(iy), a
+BB3_45:
+	or	a, a
+	sbc	hl, hl
+	ld	bc, -2924
+	lea	iy, ix
+	add	iy, bc
+	ld	de, (iy)
+	ld	l, e
+	push	ix
+	ld	bc, -2927
+	add	ix, bc
+	ld	de, (ix)
+	pop	ix
+	push	de
+	push	hl
+	ld	bc, -2918
+	lea	hl, ix
+	add	hl, bc
+	ld	hl, (hl)
+	push	hl
+	ld	bc, -2921
+	lea	hl, ix
+	add	hl, bc
+	ld	hl, (hl)
+	push	hl
+	call	_DrawSprite
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	ld	bc, -2924
+	lea	hl, ix
+	add	hl, bc
+	ld	hl, (hl)
+	push	hl
+	call	_DrawBackground
+	pop	hl
+	ld	bc, -2938
+	lea	hl, ix
+	add	hl, bc
+	ld	hl, (hl)
+	push	hl
+	call	_UpdateAndRenderLasers
+	pop	hl
+	ld	hl, 1
+	push	hl
+	call	_gfx_Blit
+	pop	hl
+	ld	hl, -720868
+	push	de
+	ld	e, (hl)
+	inc	hl
+	ld	d, (hl)
+	ld	l, e
+	ld	h, d
+	pop	de
+	ld	a, l
+	cp	a, 64
+	ld	bc, -2935
+	lea	hl, ix
+	push	af
+	add	hl, bc
+	pop	af
+	ld	e, (hl)
+	jp	nz, BB3_2
+BB3_46:
+	call	_gfx_End
+	or	a, a
+	sbc	hl, hl
+	ld	sp, ix
+	pop	ix
+	ret
+	section	.text,"ax",@progbits
+
+	section	.text,"ax",@progbits
+	public	_RenderHealth
+_RenderHealth:
+	ld	hl, -6
+	call	__frameset
+	ld	e, (ix + 6)
+	ld	iy, 0
+	ld	a, e
+	or	a, a
+	jr	nz, BB4_2
+BB4_1:
+	ld	sp, ix
+	pop	ix
+	ret
+BB4_2:
+	ld	bc, 28
+	or	a, a
+	sbc	hl, hl
+	ld	l, e
+	call	__imulu
+	push	hl
+	pop	bc
+BB4_3:
+	push	bc
+	pop	hl
+	lea	de, iy
+	or	a, a
+	sbc	hl, de
+	jr	z, BB4_1
+	ld	hl, 3
+	push	hl
+	push	hl
+	or	a, a
+	sbc	hl, hl
+	push	hl
+	push	iy
+	ld	hl, _health_data
+	push	hl
+	ld	(ix - 3), iy
+	ld	(ix - 6), bc
+	call	_gfx_ScaledTransparentSprite_NoClip
+	ld	bc, (ix - 6)
+	ld	iy, (ix - 3)
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	ld	de, 28
+	add	iy, de
+	jr	BB4_3
+	section	.text,"ax",@progbits
+
+	section	.text,"ax",@progbits
+	public	_DrawSprite
+_DrawSprite:
+	call	__frameset0
+	ld	hl, (ix + 15)
+	ld	de, (_DrawSprite.oldX)
+	ld	bc, (_DrawSprite.oldY)
+	push	bc
+	push	de
+	push	hl
+	call	_gfx_Sprite
+	pop	hl
+	pop	hl
+	pop	hl
+	ld	hl, (ix + 12)
+	dec	hl
+	ld	bc, 3
+	call	__imulu
+	push	hl
+	pop	de
+	ld	hl, ___const.DrawSprite.nyancat_group
+	add	hl, de
+	ld	hl, (hl)
+	ld	de, 2
+	push	de
+	push	de
+	ld	de, (ix + 9)
+	push	de
+	ld	de, (ix + 6)
+	push	de
+	push	hl
+	call	_gfx_ScaledTransparentSprite_NoClip
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	ld	hl, (ix + 6)
+	ld	(_DrawSprite.oldX), hl
+	ld	hl, (ix + 9)
+	ld	(_DrawSprite.oldY), hl
+	pop	ix
+	ret
+	section	.text,"ax",@progbits
+
+	section	.text,"ax",@progbits
+	public	_End
+_End:
+	jp	_gfx_End
+	section	.text,"ax",@progbits
+
+	section	.text,"ax",@progbits
+	public	_MainMenu
+_MainMenu:
+	ld	hl, -3
+	call	__frameset
+	ld	hl, (ix + 9)
+	ld	bc, (hl)
+	ld	hl, (ix + 12)
+	ld	de, (hl)
+	push	de
+	push	bc
+	ld	hl, (ix + 6)
+	push	hl
+	call	_gfx_GetSprite
+	pop	hl
+	pop	hl
+	pop	hl
+	ld	hl, (ix + 9)
+	ld	iy, (hl)
+	ld	hl, (ix + 12)
+	ld	de, (hl)
+	ld	bc, 0
+	ld	a, (ix + 15)
+	ld	(ix - 3), a
+	ld	c, (ix + 15)
+	ld	hl, (ix + 6)
+	push	hl
+	push	bc
+	push	de
+	push	iy
+	call	_DrawSprite
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	ld	hl, 1
+	push	hl
+	call	_gfx_Blit
+	pop	hl
+	ld	hl, -917456
+	push	de
+	ld	e, (hl)
+	inc	hl
+	ld	d, (hl)
+	ld	l, e
+	ld	h, d
+	pop	de
+	ld.sis	bc, -520
+	call	__sand
+	ld.sis	de, 7
+	add.sis	hl, de
+	ld	iy, -917456
+	ld	(iy), l
+	ld	(iy + 1), h
+BB7_1:
+	ld	hl, -917452
+	push	de
+	ld	e, (hl)
+	inc	hl
+	ld	d, (hl)
+	ld	l, e
+	ld	h, d
+	pop	de
+	ld	a, l
+	bit	2, a
+	jp	z, BB7_5
+	ld	a, (ix - 3)
+	inc	a
+	ld	(ix - 3), a
+	ld	hl, 14
+	push	hl
+	call	_gfx_FillScreen
+	pop	hl
+	ld	l, (ix - 3)
+	ld	a, l
+	cp	a, 13
+	ld	a, 1
+	ld	c, a
+	jr	z, BB7_4
+	ld	c, l
+BB7_4:
+	ld	hl, -917452
+	ld.sis	de, 4
+	ld	(hl), e
+	inc	hl
+	ld	(hl), d
+	ld	hl, (ix + 9)
+	ld	iy, (hl)
+	ld	hl, (ix + 12)
+	ld	de, (hl)
+	push	bc
+	pop	hl
+	ld	(ix - 3), hl
+	ld	bc, 0
+	ld	c, l
+	ld	hl, (ix + 6)
+	push	hl
+	push	bc
+	push	de
+	push	iy
+	call	_DrawSprite
+	pop	hl
+	pop	hl
+	pop	hl
+	pop	hl
+	ld	hl, (ix - 3)
+	push	hl
+	call	_DrawBackground
+	pop	hl
+	or	a, a
+	sbc	hl, hl
+	push	hl
+	ld	hl, 8
+	push	hl
+	ld	hl, 1
+	push	hl
+	ld	hl, 32
+	push	hl
+	ld	hl, 35
+	push	hl
+	ld	hl, 50
+	push	hl
+	ld	hl, _.str
+	push	hl
+	call	_PrintScaled
+	ld	hl, 21
+	add	hl, sp
+	ld	sp, hl
+	ld	de, 0
+	push	de
+	ld	hl, 1
+	push	hl
+	push	de
+	ld	hl, 16
+	push	hl
+	ld	hl, -86
+	push	hl
+	ld	hl, 75
+	push	hl
+	ld	hl, _.str.1
+	push	hl
+	call	_PrintScaled
+	ld	hl, 21
+	add	hl, sp
+	ld	sp, hl
+	ld	hl, 1
+	push	hl
+	call	_gfx_Blit
+	pop	hl
+	ld	hl, (ix - 3)
+	ld	(ix - 3), l
+BB7_5:
+	call	_kb_AnyKey
+	or	a, a
+	jp	z, BB7_1
+	ld	hl, -720868
+	push	de
+	ld	e, (hl)
+	inc	hl
+	ld	d, (hl)
+	ld	l, e
+	ld	h, d
+	pop	de
+	ld	a, l
+	cp	a, 64
+	jr	nz, BB7_8
+	ld	a, 0
+	jr	BB7_9
+BB7_8:
+	ld	a, -1
+BB7_9:
+	pop	hl
+	pop	ix
+	ret
+	section	.text,"ax",@progbits
+
+	section	.text,"ax",@progbits
+	public	_PrintScaled
+_PrintScaled:
+	ld	hl, -25
+	call	__frameset
+	ld	hl, (ix + 6)
+	ld	(ix - 6), hl
+	ld	hl, (ix + 9)
+	ld	(ix - 15), hl
+	ld	a, (ix + 12)
+	ld	(ix - 22), a
+	ld	a, (ix + 15)
+	ld	(ix - 12), a
+	ld	a, (ix + 18)
+	ld	(ix - 19), a
+	ld	a, (ix + 21)
+	ld	(ix - 9), a
+	ld	a, -1
+	ld	(ix - 3), a
+	ld	l, (ix + 24)
+	push	hl
+	call	_gfx_SetTextBGColor
+	pop	hl
+	ld	l, (ix - 9)
+	push	hl
+	call	_gfx_SetTextFGColor
+	ld	iy, (ix - 6)
+	pop	hl
+	ld	bc, 0
+BB8_1:
+	ld	a, (ix - 3)
+	inc	a
+	push	bc
+	pop	de
+	ld	(ix - 3), a
+	ld	e, a
+	lea	hl, iy
+	add	hl, de
+	ld	a, (hl)
+	or	a, a
+	jr	nz, BB8_1
+	ld	(ix - 18), bc
+	ld	hl, _malloc
+	push	hl
+	ld	a, (ix - 12)
+	ld	l, a
+	push	hl
+	push	hl
+	call	_gfx_AllocSprite
+	push	hl
+	pop	de
+	pop	hl
+	pop	hl
+	pop	hl
+	push	de
+	pop	hl
+	add	hl, bc
+	or	a, a
+	sbc	hl, bc
+	jr	nz, BB8_4
+	call	_gfx_End
+	ld	iy, -3145600
+	call	_os_ClrLCD
+	call	_os_HomeUp
+	call	_os_DrawStatusBar
+	ld	hl, -114
+	push	hl
+	call	_os_ThrowError
+	pop	hl
+BB8_4:
+	ld	hl, (ix - 18)
+	ld	l, (ix - 12)
+	ld	(ix - 18), hl
+	ld	iy, 0
+	push	af
+	ld	a, (ix - 3)
+	ld	iyl, a
+	pop	af
+	ld	l, (ix - 22)
+	ld	(ix - 22), hl
+	ld	l, (ix - 9)
+	ld	(ix - 25), hl
+	ld	bc, 0
+BB8_5:
+	lea	hl, iy
+	or	a, a
+	sbc	hl, bc
+	jp	z, BB8_13
+	ld	(ix - 12), iy
+	ld	hl, (ix - 6)
+	add	hl, bc
+	ld	l, (hl)
+	push	hl
+	ld	(ix - 9), bc
+	ld	(ix - 3), de
+	call	_gfx_GetSpriteChar
+	pop	de
+	ld	de, (ix - 3)
+	push	de
+	push	hl
+	call	_gfx_ScaleSprite
+	pop	hl
+	pop	hl
+	ld	hl, (ix - 22)
+	push	hl
+	ld	hl, (ix - 15)
+	push	hl
+	ld	hl, (ix - 3)
+	push	hl
+	call	_gfx_TransparentSprite_NoClip
+	pop	hl
+	pop	hl
+	pop	hl
+	bit	0, (ix - 19)
+	jp	z, BB8_12
+	ld	bc, (ix - 25)
+	inc	c
+	ld	iy, (ix - 9)
+	lea	hl, iy
+	ld	de, 2
+	or	a, a
+	sbc	hl, de
+	ld	a, 10
+	jr	z, BB8_9
+	ld	a, c
+BB8_9:
+	lea	hl, iy
+	ld	de, 1
+	or	a, a
+	sbc	hl, de
+	ld	l, 7
+	jr	z, BB8_11
+	ld	l, a
+BB8_11:
+	ld	(ix - 25), hl
+	push	hl
+	call	_gfx_SetTextFGColor
+	pop	hl
+BB8_12:
+	ld	bc, (ix - 9)
+	inc	bc
+	ld	hl, (ix - 15)
+	ld	de, (ix - 18)
+	add	hl, de
+	ld	(ix - 15), hl
+	ld	de, (ix - 3)
+	ld	iy, (ix - 12)
+	jp	BB8_5
+BB8_13:
+	ld	(ix + 6), de
+	ld	sp, ix
+	pop	ix
+	jp	_free
+	section	.text,"ax",@progbits
+
+	section	.rodata,"a",@progbits
+	private	___const.DrawBackground.len
+___const.DrawBackground.len:
+	db	13, "	", 13, 13, ""
+
+	section	.rodata,"a",@progbits
+	private	___const.DrawBackground.frame1
+___const.DrawBackground.frame1:
+	dl	5
+	dl	56
+	dl	3
+	dl	4
+	dl	0
+	dl	61
+	dl	4
+	dl	3
+	dl	5
+	dl	65
+	dl	3
+	dl	4
+	dl	9
+	dl	61
+	dl	4
+	dl	3
+	dl	50
+	dl	147
+	dl	4
+	dl	4
+	dl	50
+	dl	147
+	dl	4
+	dl	4
+	dl	37
+	dl	161
+	dl	4
+	dl	4
+	dl	64
+	dl	161
+	dl	4
+	dl	4
+	dl	50
+	dl	174
+	dl	4
+	dl	4
+	dl	315
+	dl	216
+	dl	4
+	dl	3
+	dl	310
+	dl	0
+	dl	4
+	dl	0
+	dl	297
+	dl	6
+	dl	8
+	dl	3
+	dl	310
+	dl	6
+	dl	4
+	dl	3
+	dl	310
+	dl	15
+	dl	4
+	dl	8
+
+	section	.rodata,"a",@progbits
+	private	___const.DrawBackground.frame2
+___const.DrawBackground.frame2:
+	dl	23
+	dl	161
+	dl	4
+	dl	4
+	dl	302
+	dl	216
+	dl	3
+	dl	4
+	dl	266
+	dl	0
+	dl	3
+	dl	0
+	dl	284
+	dl	0
+	dl	3
+	dl	0
+	dl	261
+	dl	6
+	dl	4
+	dl	3
+	dl	288
+	dl	6
+	dl	4
+	dl	3
+	dl	266
+	dl	15
+	dl	3
+	dl	3
+	dl	274
+	dl	19
+	dl	3
+	dl	3
+	dl	284
+	dl	15
+	dl	3
+	dl	3
+
+	section	.rodata,"a",@progbits
+	private	___const.DrawBackground.frame3
+___const.DrawBackground.frame3:
+	dl	224
+	dl	6
+	dl	4
+	dl	3
+	dl	251
+	dl	6
+	dl	4
+	dl	3
+	dl	238
+	dl	19
+	dl	3
+	dl	4
+	dl	315
+	dl	47
+	dl	4
+	dl	8
+	dl	302
+	dl	61
+	dl	7
+	dl	4
+	dl	325
+	dl	61
+	dl	4
+	dl	4
+	dl	315
+	dl	70
+	dl	4
+	dl	8
+	dl	5
+	dl	167
+	dl	3
+	dl	4
+	dl	0
+	dl	162
+	dl	4
+	dl	3
+	dl	9
+	dl	162
+	dl	4
+	dl	3
+	dl	5
+	dl	166
+	dl	3
+	dl	3
+	dl	274
+	dl	202
+	dl	4
+	dl	4
+	dl	261
+	dl	216
+	dl	4
+	dl	4
+	dl	288
+	dl	216
+	dl	4
+	dl	4
+	dl	274
+	dl	230
+	dl	4
+	dl	3
+
+	section	.rodata,"a",@progbits
+	private	___const.DrawBackground.frame4
+___const.DrawBackground.frame4:
+	dl	210
+	dl	6
+	dl	4
+	dl	3
+	dl	278
+	dl	47
+	dl	4
+	dl	4
+	dl	278
+	dl	74
+	dl	4
+	dl	4
+	dl	270
+	dl	52
+	dl	3
+	dl	3
+	dl	288
+	dl	52
+	dl	3
+	dl	3
+	dl	265
+	dl	61
+	dl	4
+	dl	4
+	dl	292
+	dl	61
+	dl	4
+	dl	4
+	dl	270
+	dl	70
+	dl	3
+	dl	3
+	dl	288
+	dl	70
+	dl	3
+	dl	3
+	dl	233
+	dl	202
+	dl	4
+	dl	4
+	dl	233
+	dl	230
+	dl	4
+	dl	3
+	dl	224
+	dl	207
+	dl	3
+	dl	3
+	dl	242
+	dl	207
+	dl	3
+	dl	3
+	dl	219
+	dl	216
+	dl	4
+	dl	4
+	dl	246
+	dl	216
+	dl	4
+	dl	4
+	dl	224
+	dl	226
+	dl	3
+	dl	3
+	dl	242
+	dl	226
+	dl	3
+	dl	3
+
+	section	.rodata,"a",@progbits
+	private	___const.DrawBackground.frame5
+___const.DrawBackground.frame5:
+	dl	192
+	dl	1
+	dl	3
+	dl	4
+	dl	192
+	dl	10
+	dl	3
+	dl	3
+	dl	187
+	dl	6
+	dl	4
+	dl	3
+	dl	196
+	dl	6
+	dl	4
+	dl	3
+	dl	242
+	dl	47
+	dl	4
+	dl	4
+	dl	242
+	dl	74
+	dl	4
+	dl	4
+	dl	229
+	dl	61
+	dl	4
+	dl	4
+	dl	256
+	dl	61
+	dl	4
+	dl	4
+	dl	192
+	dl	202
+	dl	4
+	dl	8
+	dl	192
+	dl	226
+	dl	4
+	dl	7
+	dl	178
+	dl	216
+	dl	8
+	dl	4
+	dl	202
+	dl	216
+	dl	7
+	dl	4
+	dl	192
+	dl	216
+	dl	4
+	dl	4
+
+	section	.rodata,"a",@progbits
+	private	___const.DrawBackground.frame6
+___const.DrawBackground.frame6:
+	dl	215
+	dl	61
+	dl	4
+	dl	4
+	dl	164
+	dl	0
+	dl	4
+	dl	5
+	dl	164
+	dl	10
+	dl	4
+	dl	9
+	dl	155
+	dl	6
+	dl	8
+	dl	3
+	dl	169
+	dl	6
+	dl	8
+	dl	3
+	dl	315
+	dl	147
+	dl	4
+	dl	8
+	dl	315
+	dl	170
+	dl	4
+	dl	8
+	dl	302
+	dl	161
+	dl	7
+	dl	4
+	dl	315
+	dl	161
+	dl	4
+	dl	4
+	dl	155
+	dl	207
+	dl	4
+	dl	8
+	dl	155
+	dl	221
+	dl	4
+	dl	8
+	dl	146
+	dl	216
+	dl	8
+	dl	4
+	dl	160
+	dl	216
+	dl	9
+	dl	4
+
+	section	.rodata,"a",@progbits
+	private	___const.DrawBackground.frame7
+___const.DrawBackground.frame7:
+	dl	128
+	dl	0
+	dl	4
+	dl	1
+	dl	128
+	dl	15
+	dl	4
+	dl	8
+	dl	114
+	dl	6
+	dl	9
+	dl	3
+	dl	128
+	dl	6
+	dl	4
+	dl	3
+	dl	138
+	dl	6
+	dl	7
+	dl	3
+	dl	197
+	dl	56
+	dl	3
+	dl	4
+	dl	197
+	dl	65
+	dl	3
+	dl	4
+	dl	192
+	dl	61
+	dl	4
+	dl	3
+	dl	201
+	dl	61
+	dl	4
+	dl	3
+	dl	128
+	dl	211
+	dl	3
+	dl	4
+	dl	128
+	dl	220
+	dl	3
+	dl	4
+	dl	123
+	dl	216
+	dl	4
+	dl	3
+	dl	132
+	dl	216
+	dl	4
+	dl	3
+	dl	278
+	dl	147
+	dl	4
+	dl	4
+	dl	278
+	dl	174
+	dl	4
+	dl	4
+	dl	270
+	dl	152
+	dl	3
+	dl	3
+	dl	288
+	dl	152
+	dl	3
+	dl	3
+	dl	265
+	dl	161
+	dl	4
+	dl	4
+	dl	292
+	dl	161
+	dl	4
+	dl	4
+	dl	270
+	dl	170
+	dl	3
+	dl	3
+	dl	288
+	dl	170
+	dl	3
+	dl	3
+
+	section	.rodata,"a",@progbits
+	private	___const.DrawBackground.frame8
+___const.DrawBackground.frame8:
+	dl	78
+	dl	0
+	dl	3
+	dl	1
+	dl	96
+	dl	0
+	dl	3
+	dl	1
+	dl	73
+	dl	6
+	dl	4
+	dl	3
+	dl	100
+	dl	6
+	dl	4
+	dl	3
+	dl	78
+	dl	15
+	dl	3
+	dl	3
+	dl	96
+	dl	15
+	dl	3
+	dl	3
+	dl	86
+	dl	19
+	dl	4
+	dl	4
+	dl	169
+	dl	51
+	dl	4
+	dl	8
+	dl	169
+	dl	65
+	dl	4
+	dl	8
+	dl	160
+	dl	60
+	dl	8
+	dl	4
+	dl	174
+	dl	60
+	dl	8
+	dl	4
+	dl	242
+	dl	147
+	dl	4
+	dl	4
+	dl	242
+	dl	174
+	dl	4
+	dl	4
+	dl	229
+	dl	161
+	dl	4
+	dl	4
+	dl	256
+	dl	161
+	dl	4
+	dl	4
+	dl	110
+	dl	216
+	dl	3
+	dl	4
+
+	section	.rodata,"a",@progbits
+	private	___const.DrawBackground.frame9
+___const.DrawBackground.frame9:
+	dl	46
+	dl	19
+	dl	3
+	dl	4
+	dl	32
+	dl	6
+	dl	4
+	dl	3
+	dl	59
+	dl	6
+	dl	4
+	dl	3
+	dl	133
+	dl	47
+	dl	4
+	dl	8
+	dl	133
+	dl	70
+	dl	4
+	dl	8
+	dl	119
+	dl	61
+	dl	8
+	dl	4
+	dl	133
+	dl	61
+	dl	4
+	dl	4
+	dl	142
+	dl	61
+	dl	8
+	dl	4
+	dl	202
+	dl	154
+	dl	3
+	dl	3
+	dl	202
+	dl	162
+	dl	3
+	dl	3
+	dl	197
+	dl	158
+	dl	3
+	dl	3
+	dl	207
+	dl	158
+	dl	3
+	dl	3
+	dl	82
+	dl	202
+	dl	4
+	dl	4
+	dl	82
+	dl	230
+	dl	4
+	dl	3
+	dl	69
+	dl	216
+	dl	4
+	dl	4
+	dl	96
+	dl	216
+	dl	4
+	dl	4
+
+	section	.rodata,"a",@progbits
+	private	___const.DrawBackground.frame10
+___const.DrawBackground.frame10:
+	dl	18
+	dl	6
+	dl	4
+	dl	3
+	dl	91
+	dl	47
+	dl	4
+	dl	4
+	dl	91
+	dl	74
+	dl	4
+	dl	4
+	dl	82
+	dl	52
+	dl	3
+	dl	3
+	dl	101
+	dl	52
+	dl	3
+	dl	3
+	dl	78
+	dl	61
+	dl	3
+	dl	4
+	dl	105
+	dl	61
+	dl	4
+	dl	4
+	dl	82
+	dl	70
+	dl	3
+	dl	3
+	dl	101
+	dl	70
+	dl	3
+	dl	3
+	dl	169
+	dl	154
+	dl	4
+	dl	7
+	dl	169
+	dl	166
+	dl	4
+	dl	8
+	dl	160
+	dl	162
+	dl	8
+	dl	3
+	dl	174
+	dl	162
+	dl	8
+	dl	3
+	dl	46
+	dl	202
+	dl	3
+	dl	4
+	dl	46
+	dl	230
+	dl	3
+	dl	3
+	dl	37
+	dl	207
+	dl	3
+	dl	3
+	dl	55
+	dl	207
+	dl	3
+	dl	3
+	dl	32
+	dl	216
+	dl	4
+	dl	4
+	dl	59
+	dl	216
+	dl	4
+	dl	4
+	dl	37
+	dl	226
+	dl	3
+	dl	3
+	dl	55
+	dl	226
+	dl	3
+	dl	3
+
+	section	.rodata,"a",@progbits
+	private	___const.DrawBackground.frame11
+___const.DrawBackground.frame11:
+	dl	0
+	dl	1
+	dl	3
+	dl	4
+	dl	0
+	dl	10
+	dl	3
+	dl	3
+	dl	4
+	dl	6
+	dl	4
+	dl	3
+	dl	50
+	dl	47
+	dl	4
+	dl	4
+	dl	50
+	dl	74
+	dl	4
+	dl	4
+	dl	37
+	dl	61
+	dl	4
+	dl	4
+	dl	64
+	dl	61
+	dl	4
+	dl	4
+	dl	133
+	dl	149
+	dl	4
+	dl	8
+	dl	133
+	dl	170
+	dl	4
+	dl	8
+	dl	120
+	dl	162
+	dl	9
+	dl	3
+	dl	133
+	dl	162
+	dl	4
+	dl	3
+	dl	142
+	dl	162
+	dl	8
+	dl	3
+	dl	9
+	dl	202
+	dl	4
+	dl	8
+	dl	9
+	dl	226
+	dl	4
+	dl	7
+	dl	0
+	dl	216
+	dl	3
+	dl	4
+	dl	9
+	dl	216
+	dl	4
+	dl	4
+	dl	18
+	dl	216
+	dl	8
+	dl	4
+
+	section	.data,"aw",@progbits
+	public	_A_data
+_A_data:
+	db	"", 0, "", 0, "", 0, 0, "", 0, 0, "", 0, 0, ""
+
+	section	.data,"aw",@progbits
+	public	_C_data
+_C_data:
+	db	"", 0, "", 0, "", 0, 0, "", 0, 0, 0, "", 0, 0, "", 0, "", 0
+
+	section	.data,"aw",@progbits
+	public	_E_data
+_E_data:
+	db	"", 0, 0, "", 0, 0, ""
+
+	section	.data,"aw",@progbits
+	public	_G_data
+_G_data:
+	db	"", 0, "", 0, 0, 0, "", 0, "", 0, 0, "", 0, "", 0
+
+	section	.data,"aw",@progbits
+	public	_H_data
+_H_data:
+	db	"", 0, 0, "", 0, 0, "", 0, 0, "", 0, 0, ""
+
+	section	.data,"aw",@progbits
+	public	_M_data
+_M_data:
+	db	"", 0, 0, 0, "", 0, "", 0, "", 0, "", 0, 0, 0, "", 0, 0, 0, ""
+
+	section	.data,"aw",@progbits
+	public	_N_data
+_N_data:
+	db	"", 0, 0, 0, "", 0, 0, "", 0, "", 0, "", 0, 0, "", 0, 0, 0, ""
+
+	section	.data,"aw",@progbits
+	public	_T_data
+_T_data:
+	db	"", 0, "", 0, 0, "", 0, 0, "", 0, 0, "", 0
+
+	section	.data,"aw",@progbits
+	public	_Y_data
+_Y_data:
+	db	"", 0, 0, 0, "", 0, "", 0, "", 0, 0, 0, "", 0, 0, 0, 0, "", 0, 0, 0, 0, "", 0, 0
+
+	section	.data,"aw",@progbits
+	public	_rainbow_data
+_rainbow_data:
+	db	"																								", 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, "", 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13
+
+	section	.data,"aw",@progbits
+	public	_shit_data
+_shit_data:
+	db	13, 13, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, "", 0, 0, 0, 0, "", 0, 0, 0, 0, "", 0, 0, 0, "", 0, 0, "", 0, "", 0, "", 0
+
+	section	.data,"aw",@progbits
+	public	_global_palette
+_global_palette:
+	db	"ÿÿsN3~Óüs~", 0, 0, 0, "|`~àÿà›ß°Ì", 0, "!T""Ð%¹E½$5B\"
+
+	section	.rodata,"a",@progbits
+	private	___const.main.score_str
+___const.main.score_str:
+	db	"00000000", 0
+
+	section	.data,"aw",@progbits
+	public	_health_data
+_health_data:
+	db	"	", 0, 0, "", 0, "", 0, 0, 0, "", 0, "", 0, "", 0, 0, 0, "", 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0
+
+	section	.data,"aw",@progbits
+	private	_DrawSprite.oldX
+_DrawSprite.oldX:
+	dl	126
+
+	section	.data,"aw",@progbits
+	private	_DrawSprite.oldY
+_DrawSprite.oldY:
+	dl	99
+
+	section	.data,"aw",@progbits
+	public	_nyancat_1_data
+_nyancat_1_data:
+	db	"""", 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, "", 0, 0, "", 0, 0, 0, "", 0, "", 0, 0, 0, "", 0, 0, 0, 0, "", 0, 0, 0, 0, "", 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, ""
+	db	40 dup 0
+
+	section	.data,"aw",@progbits
+	public	_nyancat_2_data
+_nyancat_2_data:
+	db	"""", 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, "", 0, 0, "", 0, 0, 0, "", 0, "", 0, 0, 0, "", 0, 0, 0, 0, "", 0, 0, 0, 0, "", 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, ""
+	db	40 dup 0
+
+	section	.data,"aw",@progbits
+	public	_nyancat_3_data
+_nyancat_3_data:
+	db	"""", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, "", 0, "", 0, "", 0, 0, "", 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, "", 0, 0, 0
+
+	section	.data,"aw",@progbits
+	public	_nyancat_4_data
+_nyancat_4_data:
+	db	"""", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, "", 0, 0, 0, "", 0, 0, "", 0, "", 0, "", 0, 0, "", 0, 0, "", 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, "", 0, 0, 0, 0
+
+	section	.data,"aw",@progbits
+	public	_nyancat_5_data
+_nyancat_5_data:
+	db	"""", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, "", 0, 0, "", 0, 0, "", 0, 0, "", 0, 0, 0, "", 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, "", 0, 0, 0, 0, 0, 0
+
+	section	.data,"aw",@progbits
+	public	_nyancat_6_data
+_nyancat_6_data:
+	db	"""", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, "", 0, 0, 0, 0, 0, 0
+
+	section	.data,"aw",@progbits
+	public	_nyancat_7_data
+_nyancat_7_data:
+	db	"""", 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, "", 0, 0, "", 0, 0, 0, "", 0, "", 0, 0, 0, "", 0, 0, 0, 0, "", 0, 0, 0, 0, "", 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, ""
+	db	40 dup 0
+
+	section	.data,"aw",@progbits
+	public	_nyancat_8_data
+_nyancat_8_data:
+	db	"""", 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0, "", 0, 0, "", 0, 0, "", 0, 0, "", 0, 0, 0, "", 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, ""
+	db	38 dup 0
+
+	section	.data,"aw",@progbits
+	public	_nyancat_9_data
+_nyancat_9_data:
+	db	"""", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, "", 0, "", 0, "", 0, 0, "", 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, "", 0, 0, 0
+
+	section	.data,"aw",@progbits
+	public	_nyancat_10_data
+_nyancat_10_data:
+	db	"""", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, "", 0, 0, 0, "", 0, 0, "", 0, "", 0, "", 0, 0, "", 0, 0, "", 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, "", 0, 0, 0, 0
+
+	section	.data,"aw",@progbits
+	public	_nyancat_11_data
+_nyancat_11_data:
+	db	"""", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, "", 0, 0, "", 0, 0, "", 0, 0, "", 0, 0, 0, "", 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, "", 0, 0, 0, 0, 0, 0
+
+	section	.data,"aw",@progbits
+	public	_nyancat_12_data
+_nyancat_12_data:
+	db	"""", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, 0, "", 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0, "", 0, 0, 0, 0, 0, 0, 0, "", 0, 0, 0, "", 0, 0, 0, 0, 0, 0
+
+	section	.rodata,"a",@progbits
+	private	___const.DrawSprite.nyancat_group
+___const.DrawSprite.nyancat_group:
+	dl	_nyancat_1_data
+	dl	_nyancat_2_data
+	dl	_nyancat_3_data
+	dl	_nyancat_4_data
+	dl	_nyancat_5_data
+	dl	_nyancat_6_data
+	dl	_nyancat_7_data
+	dl	_nyancat_8_data
+	dl	_nyancat_9_data
+	dl	_nyancat_10_data
+	dl	_nyancat_11_data
+	dl	_nyancat_12_data
+
+	section	.rodata,"a",@progbits
+	private	_.str
+_.str:
+	db	"TI-NYAN", 0
+
+	section	.rodata,"a",@progbits
+	private	_.str.1
+_.str.1:
+	db	"Press a key", 0
+
+	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6d9aa7a16db70f3d02ae304b08d4a03011281fef)"
+	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6d9aa7a16db70f3d02ae304b08d4a03011281fef)"
+	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6d9aa7a16db70f3d02ae304b08d4a03011281fef)"
+	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6d9aa7a16db70f3d02ae304b08d4a03011281fef)"
+	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6d9aa7a16db70f3d02ae304b08d4a03011281fef)"
+	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6d9aa7a16db70f3d02ae304b08d4a03011281fef)"
+	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6d9aa7a16db70f3d02ae304b08d4a03011281fef)"
+	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6d9aa7a16db70f3d02ae304b08d4a03011281fef)"
+	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6d9aa7a16db70f3d02ae304b08d4a03011281fef)"
+	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6d9aa7a16db70f3d02ae304b08d4a03011281fef)"
+	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6d9aa7a16db70f3d02ae304b08d4a03011281fef)"
+	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6d9aa7a16db70f3d02ae304b08d4a03011281fef)"
+	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6d9aa7a16db70f3d02ae304b08d4a03011281fef)"
+	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6d9aa7a16db70f3d02ae304b08d4a03011281fef)"
+	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6d9aa7a16db70f3d02ae304b08d4a03011281fef)"
+	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6d9aa7a16db70f3d02ae304b08d4a03011281fef)"
+	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6d9aa7a16db70f3d02ae304b08d4a03011281fef)"
+	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6d9aa7a16db70f3d02ae304b08d4a03011281fef)"
+	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6d9aa7a16db70f3d02ae304b08d4a03011281fef)"
+	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6d9aa7a16db70f3d02ae304b08d4a03011281fef)"
+	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6d9aa7a16db70f3d02ae304b08d4a03011281fef)"
+	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6d9aa7a16db70f3d02ae304b08d4a03011281fef)"
+	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6d9aa7a16db70f3d02ae304b08d4a03011281fef)"
+	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6d9aa7a16db70f3d02ae304b08d4a03011281fef)"
+	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6d9aa7a16db70f3d02ae304b08d4a03011281fef)"
+	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6d9aa7a16db70f3d02ae304b08d4a03011281fef)"
+	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6d9aa7a16db70f3d02ae304b08d4a03011281fef)"
+	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6d9aa7a16db70f3d02ae304b08d4a03011281fef)"
+	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6d9aa7a16db70f3d02ae304b08d4a03011281fef)"
+	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6d9aa7a16db70f3d02ae304b08d4a03011281fef)"
+	extern	__Unwind_SjLj_Register
+	extern	_malloc
+	extern	_gfx_SetTextFGColor
+	extern	_gfx_Begin
+	extern	_gfx_SetPalette
+	extern	_os_RealToStr
+	extern	__sand
+	extern	_os_DrawStatusBar
+	extern	__setflag
+	extern	_gfx_Blit
+	extern	_gfx_AllocSprite
+	extern	_gfx_Sprite
+	extern	_free
+	extern	_gfx_ScaleSprite
+	extern	_os_HomeUp
+	extern	_os_ThrowError
+	extern	__frameset
+	extern	_gfx_GetSpriteChar
+	extern	_gfx_SetTransparentColor
+	extern	_gfx_FillRectangle_NoClip
+	extern	_kb_AnyKey
+	extern	_kb_Scan
+	extern	_gfx_SetTextBGColor
+	extern	_os_ClrLCD
+	extern	_gfx_GetSprite
+	extern	__ultof
+	extern	_gfx_SetDraw
+	extern	_gfx_FillScreen
+	extern	__Unwind_SjLj_Unregister
+	extern	_os_FloatToReal
+	extern	__imulu
+	extern	_gfx_SetColor
+	extern	_gfx_ScaledTransparentSprite_NoClip
+	extern	_gfx_TransparentSprite_NoClip
+	extern	_gfx_End
+	extern	__frameset0
