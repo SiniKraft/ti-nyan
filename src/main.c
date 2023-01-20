@@ -1,6 +1,9 @@
-#include <tice.h>
 #include <graphx.h>
 #include <keypadc.h>
+#include <sys/rtc.h>
+#include <sys/timers.h>
+#include <sys/lcd.h>
+#include <ti/real.h>
 #include "gfx/gfx.h"
 #include "bg.h"
 #include "main_menu.h"
@@ -26,6 +29,7 @@ void RenderHealth(uint8_t count);
 
 int main(void) {
     uint8_t count = 1;
+    srand(rtc_Time());
     bool previous_key = false;
     /* Create a buffer to store the background behind the sprite */
     gfx_UninitedSprite(background, nyancat_1_width * 2, nyancat_1_height * 2);
@@ -37,6 +41,8 @@ int main(void) {
     timer_SetReload(1, TIME_TO_WAIT);
     timer_Set(2, TIME_2);
     timer_SetReload(2, TIME_2);
+    gfx_sprite_t* shit_resized = gfx_MallocSprite(26, 26);
+    gfx_ScaleSprite(shit, shit_resized);
     background->width = nyancat_1_width * 2;
     background->height = nyancat_1_height * 2;
     /* Coordinates used for the sprite */
@@ -63,6 +69,7 @@ int main(void) {
     uint8_t deciseconds = 0;
     timer_Enable(2, TIMER_32K, TIMER_0INT, TIMER_DOWN);
     uint8_t health_count = 3;
+    bool should_update = true;
     LaserList laser_list;
     laser_list.length = 2;
     laser_list.list[0].defined = false;
@@ -143,6 +150,7 @@ int main(void) {
             }
             /* Acknowledge the reload */
             timer_AckInterrupt(1, TIMER_RELOADED);
+            ShitterIAStep(&shitter_list, seconds, should_update, shit_resized);
 
             real_t tmp_real = os_FloatToReal((float)deciseconds);
             os_RealToStr(deci_score_str, &tmp_real, 1, 1, 0);
@@ -157,7 +165,6 @@ int main(void) {
             for (length = 0; score_str[length] != '\0'; ++length);
             PrintScaled(score_str, 298 - 16*length, 0, 16, false, 1, 0);
             RenderHealth(health_count);
-            ShitterIAStep(&shitter_list, seconds);
         }
 
         if (timer_ChkInterrupt(2, TIMER_RELOADED)) {
@@ -173,6 +180,7 @@ int main(void) {
             timer_AckInterrupt(2, TIMER_RELOADED);
         }
         /* Render the sprite */
+
         DrawSprite(x, y, count, background);
         DrawBackground(count);
         UpdateAndRenderLasers(&laser_list);

@@ -23,5 +23,5 @@ ___icon:
 	db	$FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF
 	public ___description
 ___description:
-	db	"TI NYAN ! (by SiniKraft)", 0
+	db	"TI-NYAN ! (by SiniKraft)", 0
 ___prgm_init:
