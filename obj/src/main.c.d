@@ -10,6 +10,7 @@ obj/src/main.c.bc: src\main.c \
   C:\Users\TheKing\CLionProjects\test\CEdev\include\sys\util.h \
   C:\Users\TheKing\CLionProjects\test\CEdev\include\sys\lcd.h \
   C:\Users\TheKing\CLionProjects\test\CEdev\include\ti\real.h \
+  C:\Users\TheKing\CLionProjects\test\CEdev\include\ti\error.h \
   src\gfx\gfx.h src\gfx\global_palette.h src\gfx\nyancat_1.h \
   src\gfx\nyancat_2.h src\gfx\nyancat_3.h src\gfx\nyancat_4.h \
   src\gfx\nyancat_5.h src\gfx\nyancat_6.h src\gfx\nyancat_7.h \
@@ -17,5 +18,5 @@ obj/src/main.c.bc: src\main.c \
   src\gfx\nyancat_11.h src\gfx\nyancat_12.h src\gfx\rainbow.h \
   src\gfx\T.h src\gfx\H.h src\gfx\E.h src\gfx\N.h src\gfx\Y.h \
   src\gfx\A.h src\gfx\C.h src\gfx\G.h src\gfx\M.h src\gfx\health.h \
-  src\gfx\shit.h src\bg.h src\main_menu.h src\utils.h src\laser.h \
-  src\shitter.h
+  src\gfx\shit.h src\gfx\shithead.h src\bg.h src\main_menu.h src\utils.h \
+  src\laser.h src\shitter.h src\died.h

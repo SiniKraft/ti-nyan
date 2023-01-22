@@ -7,9 +7,9 @@ Section          Base   Top    High   Length
 .init.reruncheck D1AA6B D1AA6B             0h
 .init            D1AA6B D1AA95            2Ah
 .fini            D1AA95 D1AAC9            34h
-.text            D1AAC9 D1BE64          139Bh
-.data            D1BE64 D1E12C          22C8h
-.rodata          D1E12C D1E9CC           8A0h
+.text            D1AAC9 D1C5E5          1B1Ch
+.data            D1C5E5 D1E9EF          240Ah
+.rodata          D1E9EF D1F29A           8ABh
 .init_array      000000 000000             0h
 .ctors           000000 000000             0h
 .dtors           000000 000000             0h
@@ -48,7 +48,7 @@ _os_DisableHomeTextBuffer                   = D1AB8B
 _os_EnableHomeTextBuffer                    = D1AB9D
 _random                                     = D1ABAF
 __setstate                                  = D1AC0D
-__state                                     = D1BE64
+__state                                     = D1C5E5
 _os_ClrLCD                                  = 02080C
 _os_HomeUp                                  = 020828
 _os_DrawStatusBar                           = 021A3C
@@ -60,12 +60,12 @@ _malloc                                     = D1ACDA
 __alloc_base                                = D052C6
 _rand                                       = D1AD79
 _sbrk                                       = D1AD86
-__sbrkbase                                  = D1BE74
+__sbrkbase                                  = D1C5F5
 _srand                                      = D1ADA4
-.missingappvar                              = D1E12C
-.libloadname                                = D1E131
+.missingappvar                              = D1E9EF
+.libloadname                                = D1E9F4
 .libloadnamelen                             = 000007
-.webaddress                                 = D1E139
+.webaddress                                 = D1E9FC
 __start                                     = D1AA6B
 ___exithl                                   = D1AA95
 skip._exit                                  = D1AA95
@@ -74,48 +74,52 @@ skip._abort                                 = D1AA95
 _exit.sp                                    = D1AA96
 _exit.flash_wait_states                     = D1AAA0
 _DrawBackground                             = D1ADAC
-JTI0_0                                      = D1E14E
-_TryCreateLaser                             = D1B0B1
-_UpdateAndRenderLasers                      = D1B0E8
-_main                                       = D1B1B2
-_RenderHealth                               = D1B927
-_DrawSprite                                 = D1B986
-_MainMenu                                   = D1B9DF
-_ShitterIAStep                              = D1BB42
-_PrintScaled                                = D1BD10
-___const.DrawBackground.len                 = D1E16F
-___const.DrawBackground.frame1              = D1E17B
-___const.DrawBackground.frame2              = D1E223
-___const.DrawBackground.frame3              = D1E28F
-___const.DrawBackground.frame4              = D1E343
-___const.DrawBackground.frame5              = D1E40F
-___const.DrawBackground.frame6              = D1E4AB
-___const.DrawBackground.frame7              = D1E547
-___const.DrawBackground.frame8              = D1E643
-___const.DrawBackground.frame9              = D1E703
-___const.DrawBackground.frame10             = D1E7C3
-___const.DrawBackground.frame11             = D1E8BF
-_shit_data                                  = D1BE77
-_global_palette                             = D1BF22
-___const.main.score_str                     = D1E98B
-_health_data                                = D1BF4C
-_DrawSprite.oldX                            = D1BF96
-_DrawSprite.oldY                            = D1BF99
-_nyancat_1_data                             = D1BF9C
-_nyancat_2_data                             = D1C268
-_nyancat_3_data                             = D1C534
-_nyancat_4_data                             = D1C800
-_nyancat_5_data                             = D1CACC
-_nyancat_6_data                             = D1CD98
-_nyancat_7_data                             = D1D064
-_nyancat_8_data                             = D1D330
-_nyancat_9_data                             = D1D5FC
-_nyancat_10_data                            = D1D8C8
-_nyancat_11_data                            = D1DB94
-_nyancat_12_data                            = D1DE60
-___const.DrawSprite.nyancat_group           = D1E994
-_.str                                       = D1E9B8
-_.str.1                                     = D1E9C0
+JTI0_0                                      = D1EA11
+_ShowDiedScreen                             = D1B0B1
+_TryCreateLaser                             = D1B23E
+_UpdateAndRenderLasers                      = D1B275
+_main                                       = D1B33F
+_End                                        = D1BD65
+_RenderHealth                               = D1BD69
+_DrawSprite                                 = D1BDC8
+_MainMenu                                   = D1BF26
+_ShitterIAStep                              = D1C13D
+_PrintScaled                                = D1C491
+___const.DrawBackground.len                 = D1EA32
+___const.DrawBackground.frame1              = D1EA3E
+___const.DrawBackground.frame2              = D1EAE6
+___const.DrawBackground.frame3              = D1EB52
+___const.DrawBackground.frame4              = D1EC06
+___const.DrawBackground.frame5              = D1ECD2
+___const.DrawBackground.frame6              = D1ED6E
+___const.DrawBackground.frame7              = D1EE0A
+___const.DrawBackground.frame8              = D1EF06
+___const.DrawBackground.frame9              = D1EFC6
+___const.DrawBackground.frame10             = D1F086
+___const.DrawBackground.frame11             = D1F182
+_.str                                       = D1F24E
+_shit_data                                  = D1C5F8
+_global_palette                             = D1C6A3
+___const.main.score_str                     = D1F259
+_health_data                                = D1C773
+_DrawSprite.oldX                            = D1C7BD
+_DrawSprite.oldY                            = D1C7C0
+_nyancat_1_data                             = D1C7C3
+_nyancat_2_data                             = D1CA8F
+_nyancat_3_data                             = D1CD5B
+_nyancat_4_data                             = D1D027
+_nyancat_5_data                             = D1D2F3
+_nyancat_6_data                             = D1D5BF
+_nyancat_7_data                             = D1D88B
+_nyancat_8_data                             = D1DB57
+_nyancat_9_data                             = D1DE23
+_nyancat_10_data                            = D1E0EF
+_nyancat_11_data                            = D1E3BB
+_nyancat_12_data                            = D1E687
+___const.DrawSprite.nyancat_group           = D1F262
+_shithead_data                              = D1E953
+_.str.5                                     = D1F286
+_.str.1.6                                   = D1F28E
 lib.LibLoad                                 = D1A9FA
 _#gfx_Begin                                 = D1AA0D
 _#gfx_End                                   = D1AA11

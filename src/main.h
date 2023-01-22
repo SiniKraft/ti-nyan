@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 
-extern void DrawSprite(int x, int y, int frame, gfx_sprite_t *background);
+extern void DrawSprite(int x, int y, int frame, gfx_sprite_t *background, uint8_t* shitted_face);
 
 
 #ifdef __cplusplus

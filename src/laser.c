@@ -13,7 +13,6 @@ void TryCreateLaser(uint24_t x, uint8_t y, LaserList *laser_list) {
 }
 
 void UpdateAndRenderLasers(LaserList *laser_list) {
-
     for (uint8_t i = 0; i < laser_list->length; i++) {
         if (laser_list->list[i].defined) {
             gfx_SetColor(14);

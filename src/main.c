@@ -4,12 +4,14 @@
 #include <sys/timers.h>
 #include <sys/lcd.h>
 #include <ti/real.h>
+#include <ti/error.h>
 #include "gfx/gfx.h"
 #include "bg.h"
 #include "main_menu.h"
 #include "utils.h"
 #include "laser.h"
 #include "shitter.h"
+#include "died.h"
 
 #define START_X ((LCD_WIDTH - nyancat_1_width * 2) / 2)
 #define START_Y ((LCD_HEIGHT - nyancat_1_height * 2) / 2)
@@ -21,7 +23,7 @@
 #define MAX_Y (241 - nyancat_1_height * 2)
 
 
-void DrawSprite(int x, int y, int frame, gfx_sprite_t *background);
+void DrawSprite(int x, int y, int frame, gfx_sprite_t *background, uint8_t* shitted_face);
 
 void End(void);
 
@@ -31,6 +33,7 @@ int main(void) {
     uint8_t count = 1;
     srand(rtc_Time());
     bool previous_key = false;
+    uint8_t shitted_face = 0;
     /* Create a buffer to store the background behind the sprite */
     gfx_UninitedSprite(background, nyancat_1_width * 2, nyancat_1_height * 2);
     /* Disable timer 1, so it doesn't run when setting the configuration */
@@ -42,12 +45,17 @@ int main(void) {
     timer_Set(2, TIME_2);
     timer_SetReload(2, TIME_2);
     gfx_sprite_t* shit_resized = gfx_MallocSprite(26, 26);
+    if (shit_resized == NULL) {
+        End();
+        os_ThrowError(OS_E_MEMORY);
+    }
     gfx_ScaleSprite(shit, shit_resized);
     background->width = nyancat_1_width * 2;
     background->height = nyancat_1_height * 2;
     /* Coordinates used for the sprite */
     int x = START_X;
     int y = START_Y;
+    bool died = false;
     /* Initialize the graphics */
     gfx_Begin();
     /* Set the palette for the sprites */
@@ -58,7 +66,7 @@ int main(void) {
     gfx_FillScreen(14);
     gfx_SetColor(1);
 
-    if (!MainMenu(background, &x, &y, count)) {
+    if (!MainMenu(background, &x, &y, count, false)) {
         End();
         return 0;
     }
@@ -69,7 +77,6 @@ int main(void) {
     uint8_t deciseconds = 0;
     timer_Enable(2, TIMER_32K, TIMER_0INT, TIMER_DOWN);
     uint8_t health_count = 3;
-    bool should_update = true;
     LaserList laser_list;
     laser_list.length = 2;
     laser_list.list[0].defined = false;
@@ -83,10 +90,40 @@ int main(void) {
     shitter_list.list[4].defined = false;
     shitter_list.length = 5;
     shitter_list.delay = 0;
+    uint24_t destroyed_shitters = 0;
     char score_str[] = "00000000";
     char deci_score_str[] = "0";
 
     do {
+        if (died) {
+            previous_key = false;
+            shitted_face = 0;
+            x = START_X;
+            y = START_Y;
+            died = false;
+            if (!ShowDiedScreen(background, &x, &y, count, &seconds, &destroyed_shitters)) {
+                End();
+                return 0;
+            } else {
+                seconds = 0;
+                deciseconds = 0;
+                health_count = 3;
+                laser_list.list[0].defined = false;
+                laser_list.list[1].defined = false;
+                laser_list.list[2].defined = false;
+                shitter_list.list[0].defined = false;
+                shitter_list.list[1].defined = false;
+                shitter_list.list[2].defined = false;
+                shitter_list.list[3].defined = false;
+                shitter_list.list[4].defined = false;
+                shitter_list.delay = 0;
+                destroyed_shitters = 0;
+                if (!MainMenu(background, &x, &y, count, true)) {
+                    End();
+                    return 0;
+                }
+            }
+        }
         kb_key_t arrows;
         hori_move = false;
         to_walk = 4;
@@ -150,7 +187,7 @@ int main(void) {
             }
             /* Acknowledge the reload */
             timer_AckInterrupt(1, TIMER_RELOADED);
-            ShitterIAStep(&shitter_list, seconds, should_update, shit_resized);
+            ShitterIAStep(&shitter_list, seconds, &laser_list, shit_resized, &shitted_face, &health_count, &x, &y, &died, &destroyed_shitters);
 
             real_t tmp_real = os_FloatToReal((float)deciseconds);
             os_RealToStr(deci_score_str, &tmp_real, 1, 1, 0);
@@ -181,7 +218,7 @@ int main(void) {
         }
         /* Render the sprite */
 
-        DrawSprite(x, y, count, background);
+        DrawSprite(x, y, count, background, &shitted_face);
         DrawBackground(count);
         UpdateAndRenderLasers(&laser_list);
         /* Copy the buffer to the screen */
@@ -206,7 +243,7 @@ void End(void) {
 }
 
 /* Function for drawing the main sprite */
-void DrawSprite(int x, int y, int frame, gfx_sprite_t *background) {
+void DrawSprite(int x, int y, int frame, gfx_sprite_t *background, uint8_t* shitted_face) {
     static int oldX = START_X;
     static int oldY = START_Y;
     /* Render the original background */
@@ -226,6 +263,34 @@ void DrawSprite(int x, int y, int frame, gfx_sprite_t *background) {
             nyancat_12
     };
     gfx_ScaledTransparentSprite_NoClip(nyancat_group[frame - 1], x, y, 2, 2);
+    if (*shitted_face > 0) {
+        uint8_t factor_x = 36;
+        uint8_t factor_y = 12;
+        if (frame > 2) {
+            factor_x = 38;
+            factor_y = 14;
+        }
+        if (frame > 4) {
+            factor_x = 36;
+        }
+        if (frame > 5) {
+            factor_y = 12;
+        }
+        if (frame > 7) {
+            factor_x = 38;
+        }
+        if (frame > 8) {
+            factor_y = 14;
+        }
+        if (frame > 10) {
+            factor_x = 36;
+        }
+        if (frame > 11) {
+            factor_y = 12;
+        }
+        gfx_ScaledTransparentSprite_NoClip(shithead, x + factor_x, y + factor_y, 2, 2);
+        *shitted_face -= 1;
+    }
 
     oldX = x;
     oldY = y;
