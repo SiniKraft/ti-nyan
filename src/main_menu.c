@@ -36,8 +36,8 @@ bool MainMenu(gfx_sprite_t *background, const int *x, const int *y, uint8_t coun
                 timer_AckInterrupt(1, TIMER_RELOADED);
                 DrawSprite(*x, *y, count, background, &zero);
                 DrawBackground(count);
-                PrintScaled("TI-NYAN", 50, 35, 32, true, 8, 0);
-                PrintScaled("Press a key", 75, 170, 16, false, 1, 0);
+                PrintScaled("TI-NYAN", 50, 35, 32, true, 8, 0, false);
+                PrintScaled("Press a key", 75, 170, 16, false, 1, 0, false);
                 gfx_BlitBuffer();
             }
             if (kb_AnyKey()) {

@@ -5,6 +5,7 @@
 #include <sys/lcd.h>
 #include <ti/real.h>
 #include <ti/error.h>
+#include <ti/screen.h>
 #include "gfx/gfx.h"
 #include "bg.h"
 #include "main_menu.h"
@@ -47,6 +48,7 @@ int main(void) {
     gfx_sprite_t* shit_resized = gfx_MallocSprite(26, 26);
     if (shit_resized == NULL) {
         End();
+        os_ClrHome();
         os_ThrowError(OS_E_MEMORY);
     }
     gfx_ScaleSprite(shit, shit_resized);
@@ -87,7 +89,7 @@ int main(void) {
     shitter_list.list[1].defined = false;
     shitter_list.list[2].defined = false;
     shitter_list.list[3].defined = false;
-    shitter_list.list[4].defined = false;
+    shitter_list.list[4].defined = false;  // Ensuring memory is set
     shitter_list.length = 5;
     shitter_list.delay = 0;
     uint24_t destroyed_shitters = 0;
@@ -101,7 +103,7 @@ int main(void) {
             x = START_X;
             y = START_Y;
             died = false;
-            if (!ShowDiedScreen(background, &x, &y, count, &seconds, &destroyed_shitters)) {
+            if (!ShowDiedScreen(background, &x, &y, count, &seconds, &destroyed_shitters, shit)) {
                 End();
                 return 0;
             } else {
@@ -195,12 +197,12 @@ int main(void) {
             os_RealToStr(score_str, &tmp_real_2, 9, 1, 0);
             gfx_SetColor(14);
             gfx_FillRectangle_NoClip(304, 0, 16, 16);
-            PrintScaled(deci_score_str, 304, 0, 16, false, 1, 0);
+            PrintScaled(deci_score_str, 304, 0, 16, false, 1, 0, false);
             gfx_SetColor(1);
             gfx_FillRectangle_NoClip(298, 10, 4, 4);
             uint8_t length = 0;
             for (length = 0; score_str[length] != '\0'; ++length);
-            PrintScaled(score_str, 298 - 16*length, 0, 16, false, 1, 0);
+            PrintScaled(score_str, 298 - 16 * length, 0, 16, false, 1, 0, false);
             RenderHealth(health_count);
         }
 
@@ -289,6 +291,38 @@ void DrawSprite(int x, int y, int frame, gfx_sprite_t *background, uint8_t* shit
             factor_y = 12;
         }
         gfx_ScaledTransparentSprite_NoClip(shithead, x + factor_x, y + factor_y, 2, 2);
+        gfx_SetColor(21);
+        if (*shitted_face > 94) {
+            uint8_t width = 6;
+            if (*shitted_face > 98) {
+                width = 6;
+                gfx_FillRectangle_NoClip(x + factor_x - 5, y + factor_y + 6, 2, 2);
+                gfx_FillRectangle_NoClip(x + factor_x - 5, y + factor_y + 20, 2, 2);
+                gfx_FillRectangle_NoClip(x + factor_x + 31, y + factor_y + 6, 2, 2);
+                gfx_FillRectangle_NoClip(x + factor_x + 31, y + factor_y + 20, 2, 2);
+            } else {
+                if (*shitted_face > 96) {
+                    width = 4;
+                    gfx_FillRectangle_NoClip(x + factor_x - 7, y + factor_y + 5, 2, 2);
+                    gfx_FillRectangle_NoClip(x + factor_x - 7, y + factor_y + 21, 2, 2);
+                    gfx_FillRectangle_NoClip(x + factor_x + 33, y + factor_y + 5, 2, 2);
+                    gfx_FillRectangle_NoClip(x + factor_x + 33, y + factor_y + 21, 2, 2);
+                } else {
+                    if (*shitted_face > 94) {
+                        width = 2;
+                        gfx_FillRectangle_NoClip(x + factor_x - 9, y + factor_y + 4, 2, 2);
+                        gfx_FillRectangle_NoClip(x + factor_x - 9, y + factor_y + 22, 2, 2);
+                        gfx_FillRectangle_NoClip(x + factor_x + 35, y + factor_y + 4, 2, 2);
+                        gfx_FillRectangle_NoClip(x + factor_x + 35, y + factor_y + 22, 2, 2);
+                    }
+                }
+            }
+            gfx_FillRectangle_NoClip(x + factor_x - 4 - width, y + factor_y + 11, width, 2);
+            gfx_FillRectangle_NoClip(x + factor_x - 4 - width, y + factor_y + 15, width, 2);
+            gfx_FillRectangle_NoClip(x + factor_x + 32, y + factor_y + 11, width, 2);
+            gfx_FillRectangle_NoClip(x + factor_x + 32, y + factor_y + 15, width, 2);
+        }
+
         *shitted_face -= 1;
     }
 

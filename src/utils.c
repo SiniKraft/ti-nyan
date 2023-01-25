@@ -2,7 +2,8 @@
 #include <ti/screen.h>
 #include <ti/error.h>
 
-void PrintScaled(const char *text, const uint24_t x, const uint8_t y, const uint8_t size, bool is_title, uint8_t color, uint8_t bg_color) {
+void PrintScaled(const char *text, const uint24_t x, const uint8_t y, const uint8_t size, bool is_title, uint8_t color,
+                 uint8_t bg_color, bool is_best_score) {
     gfx_SetTextBGColor(bg_color);
     gfx_SetTextFGColor(color);
     uint8_t length = 0;
@@ -25,6 +26,14 @@ void PrintScaled(const char *text, const uint24_t x, const uint8_t y, const uint
                     color = 7;
                 } else if (index == 2) {
                     color = 10;
+                }
+                gfx_SetTextFGColor(color);
+            }
+            if (is_best_score) {
+                // 8 - 13
+                color++;
+                if (color == 14) {
+                    color = 8;
                 }
                 gfx_SetTextFGColor(color);
             }
