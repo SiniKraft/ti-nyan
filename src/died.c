@@ -6,6 +6,7 @@
 #include "main.h"
 #include "bg.h"
 #include "utils.h"
+#include "best_score.h"
 
 bool ShowDiedScreen(gfx_sprite_t *background, const int *x, const int *y, uint8_t count, uint24_t *seconds,
                     const uint24_t *killed, gfx_sprite_t* shit_image) {
@@ -25,24 +26,24 @@ bool ShowDiedScreen(gfx_sprite_t *background, const int *x, const int *y, uint8_
     bool best_score = true;  // SET TO TRUE FOR DEBUGGING PURPOSES !
 
     // Convert the seconds number into a string :
-    char seconds_str[] = "0\0\0\0\0\0";  // Allocate memory
+    char seconds_str[6] = "0\0\0\0\0\0";  // Allocate memory
     real_t seconds_real = os_FloatToReal((float)*seconds);
     os_RealToStr(seconds_str, &seconds_real, 6, 1, 0);  // The minimum maxLength is 6
     // Processing the second string
-    char killed_str[] = "0\0\0\0\0\0";  // Alloc enough to hold 6 chars.
+    char killed_str[6] = "0\0\0\0\0\0";  // Alloc enough to hold 6 chars.
     real_t killed_real = os_FloatToReal((float)*killed);
     os_RealToStr(killed_str, &killed_real, 6, 1, 0);  // uint24_t can have up to 8 digits,
     // But this func ensure that the max output is 6 length. Assuming you can't shoot more than 99999(9) shitters.
 
 
     // Now building the string we need to show !
-    char seconds_built_str[] = "You survived \0\0\0\0\0\0\0\0\0";  // Ensuring enough memory is allocated.
+    char seconds_built_str[22] = "You survived \0\0\0\0\0\0\0\0\0";  // Ensuring enough memory is allocated.
     // Result returned by os_RealToStr can be 6 length !
     strcat(seconds_built_str, seconds_str);
     strcat(seconds_built_str, "s !");
     // seconds_built_str can now be 'You survived 9999s !'
     // Processing killed str :
-    char killed_built_str[] = "And you killed \0\0\0\0\0\0\0";
+    char killed_built_str[22] = "And you killed \0\0\0\0\0\0\0";
     strcat(killed_built_str, killed_str);
 
     // checking length of killed_built_str to determine where to place shitter.
@@ -96,6 +97,7 @@ bool ShowDiedScreen(gfx_sprite_t *background, const int *x, const int *y, uint8_
     if (should_continue_running) {
         if (best_score) {
             // Implement Enter name section. Add Undefined byte to allow player to define name if skipped
+            AskName();
         }
     }
     return should_continue_running;

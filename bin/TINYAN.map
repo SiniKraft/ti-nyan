@@ -1,150 +1,164 @@
 Section          Base   Top    High   Length
 ---------------- ------ ------ ------ -------
-.icon            D1A882 D1A9A2           120h
-.init.libs       D1A9A2 D1A9FA            58h
-.libs            D1A9FA D1AA6B            71h
-.init.clock      D1AA6B D1AA6B             0h
-.init.reruncheck D1AA6B D1AA6B             0h
-.init            D1AA6B D1AA95            2Ah
-.fini            D1AA95 D1AAC9            34h
-.text            D1AAC9 D1CABE          1FF5h
-.data            D1CABE D1EEC8          240Ah
-.rodata          D1EEC8 D1F7B5           8EDh
+.icon            D1A882 D1A9A0           11Eh
+.init.libs       D1A9A0 D1A9F8            58h
+.libs            D1A9F8 D1AA81            89h
+.init.clock      D1AA81 D1AA81             0h
+.init.reruncheck D1AA81 D1AA81             0h
+.init            D1AA81 D1AAAB            2Ah
+.fini            D1AAAB D1AADF            34h
+.text            D1AADF D1CE17          2338h
+.data            D1CE17 D1F221          240Ah
+.rodata          D1F221 D1FB7F           95Eh
 .init_array      000000 000000             0h
 .ctors           000000 000000             0h
 .dtors           000000 000000             0h
 .fini_array      000000 000000             0h
-.bss             D052C6 D052CC D13FD8      6h
+.bss             D052C6 D052D6 D13FD8     10h
 .header          D1A87F D1A882             3h
 
 Label                                         Value
 -------------------------------------------   ------
 ___low_bss                                  = D052C6
-___len_bss                                  = 000006
+___len_bss                                  = 000010
 ___heaptop                                  = D13FD8
-___heapbot                                  = D052CC
-___libs                                     = D1A9FA
+___heapbot                                  = D052D6
+___libs                                     = D1A9F8
 ___init_array_count                         = 000000
 ___ctors_count                              = 000000
 ___dtors_count                              = 000000
 ___fini_array_count                         = 000000
 __stack                                     = D1A87E
-__bdivu                                     = D1AAC9
-__bdvrmu                                    = D1AAD3
-__frameset                                  = D1AAE2
-__frameset0                                 = D1AAF0
-__idvrms                                    = D1AAFB
-__idvrmu                                    = D1AB29
-__imulu                                     = D1AB41
-__ineg                                      = D1AB71
-__irems                                     = D1AB7A
+__bdivu                                     = D1AADF
+__bdvrmu                                    = D1AAE9
+__frameset                                  = D1AAF8
+__frameset0                                 = D1AB06
+__idvrms                                    = D1AB11
+__idvrmu                                    = D1AB3F
+__imulu                                     = D1AB57
+__ineg                                      = D1AB87
+__irems                                     = D1AB90
 __ftol                                      = 00027C
 __ftoul                                     = 00027C
 __ltof                                      = 000284
 __setflag                                   = 000218
 __ultof                                     = 000280
-__sand                                      = D1AB82
-_os_DisableHomeTextBuffer                   = D1AB8B
-_os_EnableHomeTextBuffer                    = D1AB9D
-_random                                     = D1ABAF
-__setstate                                  = D1AC0D
-__state                                     = D1CABE
+__sand                                      = D1AB98
+_os_DisableHomeTextBuffer                   = D1ABA1
+_os_EnableHomeTextBuffer                    = D1ABB3
+_random                                     = D1ABC5
+__setstate                                  = D1AC23
+__state                                     = D1CE17
+_boot_WaitShort                             = 0003B4
 _os_ClrLCD                                  = 02080C
 _os_HomeUp                                  = 020828
 _os_DrawStatusBar                           = 021A3C
 _os_ThrowError                              = 021C80
 _os_RealToStr                               = 021CB4
 _os_FloatToReal                             = 022170
-_free                                       = D1AC1D
-_malloc                                     = D1ACDA
+_free                                       = D1AC33
+_malloc                                     = D1ACF0
 __alloc_base                                = D052C6
 _strcat                                     = 0000C0
 _strlen                                     = 0000D4
-_rand                                       = D1AD79
-_sbrk                                       = D1AD86
-__sbrkbase                                  = D1CACE
-_srand                                      = D1ADA4
-.missingappvar                              = D1EEC8
-.libloadname                                = D1EECD
+_strncat                                    = 0000D8
+_rand                                       = D1AD8F
+_sbrk                                       = D1AD9C
+__sbrkbase                                  = D1CE27
+_srand                                      = D1ADBA
+.missingappvar                              = D1F221
+.libloadname                                = D1F226
 .libloadnamelen                             = 000007
-.webaddress                                 = D1EED5
-__start                                     = D1AA6B
-___exithl                                   = D1AA95
-skip._exit                                  = D1AA95
-skip.__Exit                                 = D1AA95
-skip._abort                                 = D1AA95
-_exit.sp                                    = D1AA96
-_exit.flash_wait_states                     = D1AAA0
-_DrawBackground                             = D1ADAC
-JTI0_0                                      = D1EEEA
-_ShowDiedScreen                             = D1B0B1
-_TryCreateLaser                             = D1B41A
-_UpdateAndRenderLasers                      = D1B451
-_main                                       = D1B51B
-_End                                        = D1BFD6
-_RenderHealth                               = D1BFDA
-_DrawSprite                                 = D1C039
-_MainMenu                                   = D1C3CE
-_ShitterIAStep                              = D1C5E5
-_PrintScaled                                = D1C939
-___const.DrawBackground.len                 = D1EF0B
-___const.DrawBackground.frame1              = D1EF17
-___const.DrawBackground.frame2              = D1EFBF
-___const.DrawBackground.frame3              = D1F02B
-___const.DrawBackground.frame4              = D1F0DF
-___const.DrawBackground.frame5              = D1F1AB
-___const.DrawBackground.frame6              = D1F247
-___const.DrawBackground.frame7              = D1F2E3
-___const.DrawBackground.frame8              = D1F3DF
-___const.DrawBackground.frame9              = D1F49F
-___const.DrawBackground.frame10             = D1F55F
-___const.DrawBackground.frame11             = D1F65B
-___const.ShowDiedScreen.killed_str          = D1F727
-___const.ShowDiedScreen.seconds_built_str   = D1F72E
-___const.ShowDiedScreen.killed_built_str    = D1F745
-_.str.1                                     = D1F75C
-_.str.3                                     = D1F767
-_shit_data                                  = D1CAD1
-_global_palette                             = D1CB7C
-___const.main.score_str                     = D1F774
-_health_data                                = D1CC4C
-_DrawSprite.oldX                            = D1CC96
-_DrawSprite.oldY                            = D1CC99
-_nyancat_1_data                             = D1CC9C
-_nyancat_2_data                             = D1CF68
-_nyancat_3_data                             = D1D234
-_nyancat_4_data                             = D1D500
-_nyancat_5_data                             = D1D7CC
-_nyancat_6_data                             = D1DA98
-_nyancat_7_data                             = D1DD64
-_nyancat_8_data                             = D1E030
-_nyancat_9_data                             = D1E2FC
-_nyancat_10_data                            = D1E5C8
-_nyancat_11_data                            = D1E894
-_nyancat_12_data                            = D1EB60
-___const.DrawSprite.nyancat_group           = D1F77D
-_shithead_data                              = D1EE2C
-_.str                                       = D1F7A1
-_.str.1.5                                   = D1F7A9
-lib.LibLoad                                 = D1A9FA
-_#gfx_Begin                                 = D1AA0D
-_#gfx_End                                   = D1AA11
-_#gfx_SetColor                              = D1AA15
-_#gfx_SetPalette                            = D1AA19
-_#gfx_FillScreen                            = D1AA1D
-_#gfx_SetDraw                               = D1AA21
-_#gfx_Blit                                  = D1AA25
-_#gfx_SetTextBGColor                        = D1AA29
-_#gfx_SetTextFGColor                        = D1AA2D
-_#gfx_FillRectangle_NoClip                  = D1AA31
-_#gfx_AllocSprite                           = D1AA35
-_#gfx_Sprite                                = D1AA39
-_#gfx_TransparentSprite_NoClip              = D1AA3D
-_#gfx_GetSprite                             = D1AA41
-_#gfx_ScaledTransparentSprite_NoClip        = D1AA45
-_#gfx_SetTransparentColor                   = D1AA49
-_#gfx_GetSpriteChar                         = D1AA4D
-_#gfx_ScaleSprite                           = D1AA51
-_#gfx_RotatedScaledTransparentSprite_NoClip = D1AA55
-_#kb_Scan                                   = D1AA63
-_#kb_AnyKey                                 = D1AA67
+.webaddress                                 = D1F22E
+__start                                     = D1AA81
+___exithl                                   = D1AAAB
+skip._exit                                  = D1AAAB
+skip.__Exit                                 = D1AAAB
+skip._abort                                 = D1AAAB
+_exit.sp                                    = D1AAAC
+_exit.flash_wait_states                     = D1AAB6
+_AskName                                    = D1ADC2
+JTI0_0                                      = D1F243
+_DrawBackground                             = D1B0EF
+JTI1_0                                      = D1F25B
+_ShowDiedScreen                             = D1B3F4
+_TryCreateLaser                             = D1B769
+_UpdateAndRenderLasers                      = D1B7A0
+_main                                       = D1B86A
+_End                                        = D1C32F
+_RenderHealth                               = D1C333
+_DrawSprite                                 = D1C392
+_MainMenu                                   = D1C727
+_ShitterIAStep                              = D1C93E
+_PrintScaled                                = D1CC92
+_AskName.inpt                               = D052CC
+_.str.1                                     = D1F27C
+_.str.2                                     = D1F28E
+_.str.3                                     = D1F2B0
+___const.DrawBackground.len                 = D1F2D8
+___const.DrawBackground.frame1              = D1F2E4
+___const.DrawBackground.frame2              = D1F38C
+___const.DrawBackground.frame3              = D1F3F8
+___const.DrawBackground.frame4              = D1F4AC
+___const.DrawBackground.frame5              = D1F578
+___const.DrawBackground.frame6              = D1F614
+___const.DrawBackground.frame7              = D1F6B0
+___const.DrawBackground.frame8              = D1F7AC
+___const.DrawBackground.frame9              = D1F86C
+___const.DrawBackground.frame10             = D1F92C
+___const.DrawBackground.frame11             = D1FA28
+___const.ShowDiedScreen.killed_str          = D1FAF4
+___const.ShowDiedScreen.seconds_built_str   = D1FAFA
+___const.ShowDiedScreen.killed_built_str    = D1FB10
+_.str.1.3                                   = D1FB26
+_.str.3.5                                   = D1FB31
+_shit_data                                  = D1CE2A
+_global_palette                             = D1CED5
+___const.main.score_str                     = D1FB3E
+_health_data                                = D1CFA5
+_DrawSprite.oldX                            = D1CFEF
+_DrawSprite.oldY                            = D1CFF2
+_nyancat_1_data                             = D1CFF5
+_nyancat_2_data                             = D1D2C1
+_nyancat_3_data                             = D1D58D
+_nyancat_4_data                             = D1D859
+_nyancat_5_data                             = D1DB25
+_nyancat_6_data                             = D1DDF1
+_nyancat_7_data                             = D1E0BD
+_nyancat_8_data                             = D1E389
+_nyancat_9_data                             = D1E655
+_nyancat_10_data                            = D1E921
+_nyancat_11_data                            = D1EBED
+_nyancat_12_data                            = D1EEB9
+___const.DrawSprite.nyancat_group           = D1FB47
+_shithead_data                              = D1F185
+_.str.10                                    = D1FB6B
+_.str.1.11                                  = D1FB73
+lib.LibLoad                                 = D1A9F8
+_#gfx_Begin                                 = D1AA0B
+_#gfx_End                                   = D1AA0F
+_#gfx_SetColor                              = D1AA13
+_#gfx_SetPalette                            = D1AA17
+_#gfx_FillScreen                            = D1AA1B
+_#gfx_SetDraw                               = D1AA1F
+_#gfx_Blit                                  = D1AA23
+_#gfx_PrintChar                             = D1AA27
+_#gfx_PrintStringXY                         = D1AA2B
+_#gfx_SetTextXY                             = D1AA2F
+_#gfx_SetTextBGColor                        = D1AA33
+_#gfx_SetTextFGColor                        = D1AA37
+_#gfx_SetMonospaceFont                      = D1AA3B
+_#gfx_GetTextX                              = D1AA3F
+_#gfx_GetTextY                              = D1AA43
+_#gfx_FillRectangle_NoClip                  = D1AA47
+_#gfx_AllocSprite                           = D1AA4B
+_#gfx_Sprite                                = D1AA4F
+_#gfx_TransparentSprite_NoClip              = D1AA53
+_#gfx_GetSprite                             = D1AA57
+_#gfx_ScaledTransparentSprite_NoClip        = D1AA5B
+_#gfx_SetTransparentColor                   = D1AA5F
+_#gfx_GetSpriteChar                         = D1AA63
+_#gfx_ScaleSprite                           = D1AA67
+_#gfx_RotatedScaledTransparentSprite_NoClip = D1AA6B
+_#kb_Scan                                   = D1AA79
+_#kb_AnyKey                                 = D1AA7D

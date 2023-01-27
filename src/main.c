@@ -67,6 +67,7 @@ int main(void) {
     gfx_SetDrawBuffer();
     gfx_FillScreen(14);
     gfx_SetColor(1);
+    gfx_SetMonospaceFont(8);
 
     if (!MainMenu(background, &x, &y, count, false)) {
         End();
