@@ -7,6 +7,9 @@
 #include "bg.h"
 #include "utils.h"
 #include "best_score.h"
+#include "io.h"
+
+#define EXIT_CHAR  ((char)129)
 
 bool ShowDiedScreen(gfx_sprite_t *background, const int *x, const int *y, uint8_t count, uint24_t *seconds,
                     const uint24_t *killed, gfx_sprite_t* shit_image) {
@@ -97,7 +100,13 @@ bool ShowDiedScreen(gfx_sprite_t *background, const int *x, const int *y, uint8_
     if (should_continue_running) {
         if (best_score) {
             // Implement Enter name section. Add Undefined byte to allow player to define name if skipped
-            AskName();
+            char name[13] = "";
+            strcpy(name, AskName());  // Avoid random memory errors
+            if (name[0] == EXIT_CHAR) {  // this char cannot be typed in by user, it's associated with exit.
+                // Note that the default font. Only go through 0-128 characters customs can have up to 256
+                should_continue_running = false;
+            }
+            TryWriteBestScore(seconds, killed, name);
         }
     }
     return should_continue_running;
