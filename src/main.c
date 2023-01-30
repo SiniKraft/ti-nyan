@@ -13,6 +13,7 @@
 #include "laser.h"
 #include "shitter.h"
 #include "died.h"
+#include "io.h"
 
 #define START_X ((LCD_WIDTH - nyancat_1_width * 2) / 2)
 #define START_Y ((LCD_HEIGHT - nyancat_1_height * 2) / 2)
@@ -69,6 +70,12 @@ int main(void) {
     gfx_SetColor(1);
     gfx_SetMonospaceFont(8);
 
+    // Read best score data
+
+    static BestScoreData bsd;
+    bsd.defined = false;
+    TryReadBestScore(&bsd);
+
     if (!MainMenu(background, &x, &y, count, false)) {
         End();
         return 0;
@@ -104,7 +111,7 @@ int main(void) {
             x = START_X;
             y = START_Y;
             died = false;
-            if (!ShowDiedScreen(background, &x, &y, count, &seconds, &destroyed_shitters, shit)) {
+            if (!ShowDiedScreen(background, &x, &y, count, &seconds, &destroyed_shitters, shit, &bsd)) {
                 End();
                 return 0;
             } else {

@@ -38,6 +38,16 @@ bool MainMenu(gfx_sprite_t *background, const int *x, const int *y, uint8_t coun
                 DrawBackground(count);
                 PrintScaled("TI-NYAN", 50, 35, 32, true, 8, 0, false);
                 PrintScaled("Press a key", 75, 170, 16, false, 1, 0, false);
+                gfx_SetColor(7);
+                for (uint24_t _x = 2; _x < 256; _x += 253) {
+                    gfx_FillRectangle_NoClip(_x, 224, 2, 16);
+                    gfx_FillRectangle_NoClip(_x + 62, 224, 2, 16);
+                    gfx_FillRectangle_NoClip(_x + 2, 222, 60, 2);
+                    gfx_FillRectangle_NoClip(_x + 1, 223, 2, 2);
+                    gfx_FillRectangle_NoClip(_x + 61, 223, 2, 2);
+
+                }
+
                 gfx_BlitBuffer();
             }
             if (kb_AnyKey()) {

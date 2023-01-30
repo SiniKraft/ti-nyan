@@ -12,7 +12,7 @@
 #define EXIT_CHAR  ((char)129)
 
 bool ShowDiedScreen(gfx_sprite_t *background, const int *x, const int *y, uint8_t count, uint24_t *seconds,
-                    const uint24_t *killed, gfx_sprite_t* shit_image) {
+                    const uint24_t *killed, gfx_sprite_t *shit_image, BestScoreData *bsd) {
     bool should_continue_running = true;
     bool continue_loop = true;
     bool previous_key = false;  // used to prevent the died screen from being skipped by a key not picked up !
@@ -26,7 +26,16 @@ bool ShowDiedScreen(gfx_sprite_t *background, const int *x, const int *y, uint8_
         *seconds = 9999;  // Assuming the player can't survive more than 2,7 hours
     }
 
-    bool best_score = true;  // SET TO TRUE FOR DEBUGGING PURPOSES !
+    bool best_score;
+    if (bsd->defined) {
+        if (bsd->seconds < *seconds) {
+            best_score = true;
+        } else {
+            best_score = false;
+        }
+    } else {
+        best_score = true;
+    }
 
     // Convert the seconds number into a string :
     char seconds_str[6] = "0\0\0\0\0\0";  // Allocate memory
@@ -106,7 +115,7 @@ bool ShowDiedScreen(gfx_sprite_t *background, const int *x, const int *y, uint8_
                 // Note that the default font. Only go through 0-128 characters customs can have up to 256
                 should_continue_running = false;
             }
-            TryWriteBestScore(seconds, killed, name);
+            TryWriteBestScore(seconds, killed, name, bsd);
         }
     }
     return should_continue_running;

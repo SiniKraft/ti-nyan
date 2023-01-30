@@ -8,4 +8,5 @@ obj/src/io.c.bc: src\io.c \
   C:\Users\TheKing\CLionProjects\test\CEdev\include\stdio.h \
   C:\Users\TheKing\CLionProjects\test\CEdev\include\stdarg.h \
   C:\Users\TheKing\CLionProjects\test\CEdev\include\ti\vars.h \
-  C:\Users\TheKing\CLionProjects\test\CEdev\include\ti\real.h src\io.h
+  C:\Users\TheKing\CLionProjects\test\CEdev\include\ti\real.h \
+  C:\Users\TheKing\CLionProjects\test\CEdev\include\string.h src\io.h
