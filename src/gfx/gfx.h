@@ -32,6 +32,7 @@ extern "C" {
 #include "health.h"
 #include "shit.h"
 #include "shithead.h"
+#include "head.h"
 
 #ifdef __cplusplus
 }

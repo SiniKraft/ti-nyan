@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 
-extern bool MainMenu(gfx_sprite_t *background, const int *x, const int *y, uint8_t count, bool renew);
+extern bool MainMenu(gfx_sprite_t *background, const int *x, const int *y, uint8_t count, bool renew, gfx_sprite_t* current_nyan_resized);
 
 #ifdef __cplusplus
 }

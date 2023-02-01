@@ -137,6 +137,7 @@ converts:
       - health.png
       - shit.png
       - shithead.png
+      - head.png
 
 outputs:
   - type: c

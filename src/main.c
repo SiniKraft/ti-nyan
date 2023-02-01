@@ -6,6 +6,7 @@
 #include <ti/real.h>
 #include <ti/error.h>
 #include <ti/screen.h>
+#include <string.h>
 #include "gfx/gfx.h"
 #include "bg.h"
 #include "main_menu.h"
@@ -24,12 +25,27 @@
 #define MAX_X (321 - nyancat_1_width * 2)
 #define MAX_Y (241 - nyancat_1_height * 2)
 
+gfx_sprite_t* nyancat_group[] = {
+        nyancat_1,
+        nyancat_2,
+        nyancat_3,
+        nyancat_4,
+        nyancat_5,
+        nyancat_6,
+        nyancat_7,
+        nyancat_8,
+        nyancat_9,
+        nyancat_10,
+        nyancat_11,
+        nyancat_12
+};
 
-void DrawSprite(int x, int y, int frame, gfx_sprite_t *background, uint8_t* shitted_face);
+
+void DrawSprite(int x, int y, int frame, gfx_sprite_t *background, uint8_t *shitted_face, gfx_sprite_t* current_nyan_resized);
 
 void End(void);
 
-void RenderHealth(uint8_t count);
+void RenderHealth(uint8_t count, gfx_sprite_t *health_resized);
 
 int main(void) {
     uint8_t count = 1;
@@ -46,13 +62,18 @@ int main(void) {
     timer_SetReload(1, TIME_TO_WAIT);
     timer_Set(2, TIME_2);
     timer_SetReload(2, TIME_2);
+
     gfx_sprite_t* shit_resized = gfx_MallocSprite(26, 26);
-    if (shit_resized == NULL) {
+    gfx_sprite_t* health_resized = gfx_MallocSprite(27, 24);
+    gfx_sprite_t* current_nyan_resized = gfx_MallocSprite(68, 42);
+    if (health_resized == NULL || shit_resized == NULL || current_nyan_resized == NULL) {
         End();
         os_ClrHome();
         os_ThrowError(OS_E_MEMORY);
     }
     gfx_ScaleSprite(shit, shit_resized);
+    gfx_ScaleSprite(health, health_resized);
+
     background->width = nyancat_1_width * 2;
     background->height = nyancat_1_height * 2;
     /* Coordinates used for the sprite */
@@ -76,7 +97,7 @@ int main(void) {
     bsd.defined = false;
     TryReadBestScore(&bsd);
 
-    if (!MainMenu(background, &x, &y, count, false)) {
+    if (!MainMenu(background, &x, &y, count, false, current_nyan_resized)) {
         End();
         return 0;
     }
@@ -111,7 +132,8 @@ int main(void) {
             x = START_X;
             y = START_Y;
             died = false;
-            if (!ShowDiedScreen(background, &x, &y, count, &seconds, &destroyed_shitters, shit, &bsd)) {
+            if (!ShowDiedScreen(background, &x, &y, count, &seconds, &destroyed_shitters, shit, &bsd,
+                                current_nyan_resized)) {
                 End();
                 return 0;
             } else {
@@ -128,7 +150,7 @@ int main(void) {
                 shitter_list.list[4].defined = false;
                 shitter_list.delay = 0;
                 destroyed_shitters = 0;
-                if (!MainMenu(background, &x, &y, count, true)) {
+                if (!MainMenu(background, &x, &y, count, true, current_nyan_resized)) {
                     End();
                     return 0;
                 }
@@ -198,7 +220,7 @@ int main(void) {
             /* Acknowledge the reload */
             timer_AckInterrupt(1, TIMER_RELOADED);
             ShitterIAStep(&shitter_list, seconds, &laser_list, shit_resized, &shitted_face, &health_count, &x, &y, &died, &destroyed_shitters);
-
+            gfx_ScaleSprite(nyancat_group[count - 1], current_nyan_resized);
             real_t tmp_real = os_FloatToReal((float)deciseconds);
             os_RealToStr(deci_score_str, &tmp_real, 1, 1, 0);
             real_t tmp_real_2 = os_FloatToReal((float)seconds);
@@ -211,7 +233,7 @@ int main(void) {
             uint8_t length = 0;
             for (length = 0; score_str[length] != '\0'; ++length);
             PrintScaled(score_str, 298 - 16 * length, 0, 16, false, 1, 0, false);
-            RenderHealth(health_count);
+            RenderHealth(health_count, health_resized);
         }
 
         if (timer_ChkInterrupt(2, TIMER_RELOADED)) {
@@ -228,7 +250,7 @@ int main(void) {
         }
         /* Render the sprite */
 
-        DrawSprite(x, y, count, background, &shitted_face);
+        DrawSprite(x, y, count, background, &shitted_face, current_nyan_resized);
         DrawBackground(count);
         UpdateAndRenderLasers(&laser_list);
         /* Copy the buffer to the screen */
@@ -240,10 +262,10 @@ int main(void) {
     return 0;
 }
 
-void RenderHealth(uint8_t count) {
+void RenderHealth(uint8_t count, gfx_sprite_t *health_resized) {
     if (count > 0) {
         for (uint8_t i = 0; i < count; i++) {
-            gfx_ScaledTransparentSprite_NoClip(health, 28*i, 0, 3, 3);
+            gfx_TransparentSprite_NoClip(health_resized, 28*i, 0);
         }
     }
 }
@@ -253,26 +275,15 @@ void End(void) {
 }
 
 /* Function for drawing the main sprite */
-void DrawSprite(int x, int y, int frame, gfx_sprite_t *background, uint8_t* shitted_face) {
+void DrawSprite(int x, int y, int frame, gfx_sprite_t *background, uint8_t *shitted_face, gfx_sprite_t* current_nyan_resized) {
     static int oldX = START_X;
     static int oldY = START_Y;
     /* Render the original background */
     gfx_Sprite(background, oldX, oldY);
-    gfx_sprite_t* nyancat_group[] = {
-            nyancat_1,
-            nyancat_2,
-            nyancat_3,
-            nyancat_4,
-            nyancat_5,
-            nyancat_6,
-            nyancat_7,
-            nyancat_8,
-            nyancat_9,
-            nyancat_10,
-            nyancat_11,
-            nyancat_12
-    };
-    gfx_ScaledTransparentSprite_NoClip(nyancat_group[frame - 1], x, y, 2, 2);
+
+
+    // gfx_ScaledTransparentSprite_NoClip(nyancat_group[frame - 1], x, y, 2, 2);
+    gfx_TransparentSprite_NoClip(current_nyan_resized, x, y);
     if (*shitted_face > 0) {
         uint8_t factor_x = 36;
         uint8_t factor_y = 12;
