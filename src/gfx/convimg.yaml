@@ -105,6 +105,7 @@ palettes:
       - color: { index: 100, r: 143, g: 129, b: 126 }
       - color: { index: 101, r: 143, g: 130, b: 127 }
       - color: { index: 102, r: 143, g: 132, b: 128 }
+      - color: { index: 103, r: 26, g: 13, b: 171 }
     images: automatic
 
 converts:

@@ -4,33 +4,15 @@ obj/src/main_menu.c.bc: src\main_menu.c \
   C:\Users\TheKing\CLionProjects\test\CEdev\include\cdefs.h \
   C:\Users\TheKing\CLionProjects\test\CEdev\include\stdlib.h \
   C:\Users\TheKing\CLionProjects\test\CEdev\include\stdbool.h \
-  C:\Users\TheKing\CLionProjects\test\CEdev\include\tice.h \
-  C:\Users\TheKing\CLionProjects\test\CEdev\include\sys\basicusb.h \
-  C:\Users\TheKing\CLionProjects\test\CEdev\include\sys\lcd.h \
-  C:\Users\TheKing\CLionProjects\test\CEdev\include\sys\power.h \
-  C:\Users\TheKing\CLionProjects\test\CEdev\include\sys\rtc.h \
+  C:\Users\TheKing\CLionProjects\test\CEdev\include\keypadc.h \
   C:\Users\TheKing\CLionProjects\test\CEdev\include\sys\timers.h \
   C:\Users\TheKing\CLionProjects\test\CEdev\include\sys\util.h \
-  C:\Users\TheKing\CLionProjects\test\CEdev\include\ti\debug.h \
-  C:\Users\TheKing\CLionProjects\test\CEdev\include\stddef.h \
-  C:\Users\TheKing\CLionProjects\test\CEdev\include\ti\error.h \
-  C:\Users\TheKing\CLionProjects\test\CEdev\include\ti\flags.h \
-  C:\Users\TheKing\CLionProjects\test\CEdev\include\ti\getcsc.h \
-  C:\Users\TheKing\CLionProjects\test\CEdev\include\ti\getkey.h \
-  C:\Users\TheKing\CLionProjects\test\CEdev\include\ti\graph.h \
-  C:\Users\TheKing\CLionProjects\test\CEdev\include\ti\real.h \
-  C:\Users\TheKing\CLionProjects\test\CEdev\include\ti\info.h \
-  C:\Users\TheKing\CLionProjects\test\CEdev\include\ti\python.h \
-  C:\Users\TheKing\CLionProjects\test\CEdev\include\ti\screen.h \
-  C:\Users\TheKing\CLionProjects\test\CEdev\include\ti\ui.h \
-  C:\Users\TheKing\CLionProjects\test\CEdev\include\ti\tokens.h \
-  C:\Users\TheKing\CLionProjects\test\CEdev\include\ti\vars.h \
-  C:\Users\TheKing\CLionProjects\test\CEdev\include\keypadc.h src\main.h \
-  src\bg.h src\utils.h src\gfx\gfx.h src\gfx\global_palette.h \
+  src\main.h src\bg.h src\utils.h src\gfx\gfx.h src\gfx\global_palette.h \
   src\gfx\nyancat_1.h src\gfx\nyancat_2.h src\gfx\nyancat_3.h \
   src\gfx\nyancat_4.h src\gfx\nyancat_5.h src\gfx\nyancat_6.h \
   src\gfx\nyancat_7.h src\gfx\nyancat_8.h src\gfx\nyancat_9.h \
   src\gfx\nyancat_10.h src\gfx\nyancat_11.h src\gfx\nyancat_12.h \
   src\gfx\rainbow.h src\gfx\T.h src\gfx\H.h src\gfx\E.h src\gfx\N.h \
   src\gfx\Y.h src\gfx\A.h src\gfx\C.h src\gfx\G.h src\gfx\M.h \
-  src\gfx\health.h src\gfx\shit.h src\gfx\shithead.h src\gfx\head.h
+  src\gfx\health.h src\gfx\shit.h src\gfx\shithead.h src\gfx\head.h \
+  src\other_screen.h src\io.h

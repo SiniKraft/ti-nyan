@@ -23,5 +23,5 @@ obj/src/main.c.bc: src\main.c \
   src\gfx\T.h src\gfx\H.h src\gfx\E.h src\gfx\N.h src\gfx\Y.h \
   src\gfx\A.h src\gfx\C.h src\gfx\G.h src\gfx\M.h src\gfx\health.h \
   src\gfx\shit.h src\gfx\shithead.h src\gfx\head.h src\bg.h \
-  src\main_menu.h src\utils.h src\laser.h src\shitter.h src\died.h \
-  src\io.h
+  src\main_menu.h src\io.h src\utils.h src\laser.h src\shitter.h \
+  src\died.h src\best_score.h

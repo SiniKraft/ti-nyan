@@ -31,11 +31,13 @@ void PrintScaled(const char *text, const uint24_t x, const uint8_t y, const uint
             }
             if (is_best_score) {
                 // 8 - 13
-                color++;
-                if (color == 14) {
-                    color = 8;
+                if (text[index] != ' ') {
+                    color++;
+                    if (color == 14) {
+                        color = 8;
+                    }
+                    gfx_SetTextFGColor(color);
                 }
-                gfx_SetTextFGColor(color);
             }
         }
     }

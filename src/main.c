@@ -15,6 +15,7 @@
 #include "shitter.h"
 #include "died.h"
 #include "io.h"
+#include "best_score.h"
 
 #define START_X ((LCD_WIDTH - nyancat_1_width * 2) / 2)
 #define START_Y ((LCD_HEIGHT - nyancat_1_height * 2) / 2)
@@ -24,6 +25,8 @@
 #define TIME_TO_WAIT    (TIMER_FREQ / 15)
 #define MAX_X (321 - nyancat_1_width * 2)
 #define MAX_Y (241 - nyancat_1_height * 2)
+
+#define EXIT_CHAR  ((char)129)
 
 gfx_sprite_t* nyancat_group[] = {
         nyancat_1,
@@ -41,7 +44,7 @@ gfx_sprite_t* nyancat_group[] = {
 };
 
 
-void DrawSprite(int x, int y, int frame, gfx_sprite_t *background, uint8_t *shitted_face, gfx_sprite_t* current_nyan_resized);
+void DrawSprite(int x, int y, int frame, uint8_t *shitted_face, gfx_sprite_t *current_nyan_resized);
 
 void End(void);
 
@@ -52,8 +55,6 @@ int main(void) {
     srand(rtc_Time());
     bool previous_key = false;
     uint8_t shitted_face = 0;
-    /* Create a buffer to store the background behind the sprite */
-    gfx_UninitedSprite(background, nyancat_1_width * 2, nyancat_1_height * 2);
     /* Disable timer 1, so it doesn't run when setting the configuration */
     timer_Disable(1);
     timer_Disable(2);
@@ -74,8 +75,6 @@ int main(void) {
     gfx_ScaleSprite(shit, shit_resized);
     gfx_ScaleSprite(health, health_resized);
 
-    background->width = nyancat_1_width * 2;
-    background->height = nyancat_1_height * 2;
     /* Coordinates used for the sprite */
     int x = START_X;
     int y = START_Y;
@@ -96,8 +95,21 @@ int main(void) {
     static BestScoreData bsd;
     bsd.defined = false;
     TryReadBestScore(&bsd);
+    if (bsd.defined) {
+        if (bsd.name[0] == EXIT_CHAR) {
+            char name[13] = "";
+            strcpy(name, AskName());  // Avoid random memory errors
+            uint24_t seconds = bsd.seconds;  // Avoid pointer change mess
+            uint24_t killed_shitters = bsd.killed_shitters;
+            TryWriteBestScore(&seconds, &killed_shitters, name, &bsd);
+            if (name[0] == EXIT_CHAR) {
+                End();
+                return 0;
+            }
+        }
+    }
 
-    if (!MainMenu(background, &x, &y, count, false, current_nyan_resized)) {
+    if (!MainMenu(&x, &y, count, current_nyan_resized, &bsd)) {
         End();
         return 0;
     }
@@ -132,7 +144,7 @@ int main(void) {
             x = START_X;
             y = START_Y;
             died = false;
-            if (!ShowDiedScreen(background, &x, &y, count, &seconds, &destroyed_shitters, shit, &bsd,
+            if (!ShowDiedScreen(&x, &y, count, &seconds, &destroyed_shitters, shit, &bsd,
                                 current_nyan_resized)) {
                 End();
                 return 0;
@@ -150,7 +162,7 @@ int main(void) {
                 shitter_list.list[4].defined = false;
                 shitter_list.delay = 0;
                 destroyed_shitters = 0;
-                if (!MainMenu(background, &x, &y, count, true, current_nyan_resized)) {
+                if (!MainMenu(&x, &y, count, current_nyan_resized, &bsd)) {
                     End();
                     return 0;
                 }
@@ -250,7 +262,7 @@ int main(void) {
         }
         /* Render the sprite */
 
-        DrawSprite(x, y, count, background, &shitted_face, current_nyan_resized);
+        DrawSprite(x, y, count, &shitted_face, current_nyan_resized);
         DrawBackground(count);
         UpdateAndRenderLasers(&laser_list);
         /* Copy the buffer to the screen */
@@ -275,11 +287,11 @@ void End(void) {
 }
 
 /* Function for drawing the main sprite */
-void DrawSprite(int x, int y, int frame, gfx_sprite_t *background, uint8_t *shitted_face, gfx_sprite_t* current_nyan_resized) {
+void DrawSprite(int x, int y, int frame, uint8_t *shitted_face, gfx_sprite_t *current_nyan_resized) {
     static int oldX = START_X;
     static int oldY = START_Y;
-    /* Render the original background */
-    gfx_Sprite(background, oldX, oldY);
+    gfx_SetColor(14);
+    gfx_FillRectangle_NoClip(oldX, oldY, nyancat_1_width * 2, nyancat_1_height *2);
 
 
     // gfx_ScaledTransparentSprite_NoClip(nyancat_group[frame - 1], x, y, 2, 2);

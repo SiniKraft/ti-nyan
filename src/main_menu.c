@@ -1,12 +1,13 @@
 #include <graphx.h>
-#include <tice.h>
 #include <keypadc.h>
+#include <sys/timers.h>
 #include "main.h"
 #include "bg.h"
 #include "utils.h"
 #include "gfx/gfx.h"
+#include "other_screen.h"
 
-bool MainMenu(gfx_sprite_t *background, const int *x, const int *y, uint8_t count, bool renew, gfx_sprite_t* current_nyan_resized) {
+bool MainMenu(const int *x, const int *y, uint8_t count, gfx_sprite_t *current_nyan_resized, BestScoreData *bsd) {
     bool continue_loop = true;
     bool exit = false;
     bool previous_key = false;  // used to prevent the died screen from being skipped by a key not picked up !
@@ -17,11 +18,8 @@ bool MainMenu(gfx_sprite_t *background, const int *x, const int *y, uint8_t coun
         }
     }
     uint8_t zero = 0;  // used to get a pointer pointing to 0. Passing 0 directly as a pointer = NULL dereference !
-    if (!renew) {
-        gfx_GetSprite(background, (const int) *x, *y);
-    }
     /* Draw the main sprite */
-    DrawSprite(*x, *y, count, background, &zero, current_nyan_resized);
+    DrawSprite(*x, *y, count, &zero, current_nyan_resized);
     /* Copy the buffer to the screen */
     gfx_BlitBuffer();
     timer_Enable(1, TIMER_32K, TIMER_0INT, TIMER_DOWN);  // do not delete, timer is firstly activated here
@@ -36,7 +34,7 @@ bool MainMenu(gfx_sprite_t *background, const int *x, const int *y, uint8_t coun
                 }
                 timer_AckInterrupt(1, TIMER_RELOADED);
                 gfx_ScaleSprite(nyancat_group[count - 1], current_nyan_resized);
-                DrawSprite(*x, *y, count, background, &zero, current_nyan_resized);
+                DrawSprite(*x, *y, count, &zero, current_nyan_resized);
                 DrawBackground(count);
                 PrintScaled("TI-NYAN", 50, 35, 32, true, 8, 0, false);
                 PrintScaled("Press a key", 75, 170, 16, false, 1, 0, false);
@@ -68,14 +66,19 @@ bool MainMenu(gfx_sprite_t *background, const int *x, const int *y, uint8_t coun
                     exit = true;
                     continue_loop = false;
                 }
-                if (kb_Data[1] == kb_Graph) {
-                    // OTHER SCREEN
-                    exit = true;
-                    continue_loop = false;
-                }
                 if (!previous_key) {
                     continue_loop = false;
                     previous_key = true;
+                    if (kb_Data[1] == kb_Graph) {
+                        // OTHER SCREEN
+
+                        if (!ShowOtherScreen(shit, bsd)) {
+                            exit = true;
+                            continue_loop = false;
+                        } else {
+                            continue_loop = true;
+                        }
+                    }
                 }
             } else {
                 previous_key = false;
