@@ -7,6 +7,7 @@
 #include <ti/error.h>
 #include <ti/screen.h>
 #include <string.h>
+#include <debug.h>
 #include "gfx/gfx.h"
 #include "bg.h"
 #include "main_menu.h"
@@ -16,6 +17,7 @@
 #include "died.h"
 #include "io.h"
 #include "best_score.h"
+#include "skin_selector.h"
 
 #define START_X ((LCD_WIDTH - nyancat_1_width * 2) / 2)
 #define START_Y ((LCD_HEIGHT - nyancat_1_height * 2) / 2)
@@ -28,7 +30,7 @@
 
 #define EXIT_CHAR  ((char)129)
 
-gfx_sprite_t* nyancat_group[] = {
+gfx_sprite_t* nyancat_group[] = {  // global var which can only be edited by FindSkins
         nyancat_1,
         nyancat_2,
         nyancat_3,
@@ -63,6 +65,11 @@ int main(void) {
     timer_SetReload(1, TIME_TO_WAIT);
     timer_Set(2, TIME_2);
     timer_SetReload(2, TIME_2);
+    char file_name[9] = "\x81\0";
+    TryReadCurrentSkin(file_name);
+    if (file_name[0] != EXIT_CHAR) {
+        FindSkins(file_name);
+    }
 
     gfx_sprite_t* shit_resized = gfx_MallocSprite(26, 26);
     gfx_sprite_t* health_resized = gfx_MallocSprite(27, 24);
@@ -290,9 +297,9 @@ void End(void) {
 void DrawSprite(int x, int y, int frame, uint8_t *shitted_face, gfx_sprite_t *current_nyan_resized) {
     static int oldX = START_X;
     static int oldY = START_Y;
+
     gfx_SetColor(14);
     gfx_FillRectangle_NoClip(oldX, oldY, nyancat_1_width * 2, nyancat_1_height *2);
-
 
     // gfx_ScaledTransparentSprite_NoClip(nyancat_group[frame - 1], x, y, 2, 2);
     gfx_TransparentSprite_NoClip(current_nyan_resized, x, y);

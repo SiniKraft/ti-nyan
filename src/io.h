@@ -14,6 +14,8 @@ typedef struct {
 
 extern uint8_t TryWriteBestScore(const uint24_t *seconds, const uint24_t *killed, const char name[13], BestScoreData *bsd);
 extern uint8_t TryReadBestScore(BestScoreData* bsd);
+extern uint8_t TryReadCurrentSkin(char c_skin[9]);
+extern uint8_t TryWriteCurrentSkin(char c_skin[9]);
 
 #ifdef __cplusplus
 }

@@ -36,8 +36,34 @@ uint8_t TryReadBestScore(BestScoreData* bsd) {
     if (ti_Read(bsd, sizeof(BestScoreData), 1, var) != 1) {
         return 1;
     }
+    ti_Close(var);
     return 0;
 
 }
 
+uint8_t TryReadCurrentSkin(char c_skin[9]) {
+    uint8_t var;
+    var = ti_Open(SKIN_FILE_NAME, FILE_READ);
+    if (var == 0) {
+        return 1;
+    }
+    if (ti_Read(c_skin, sizeof(char[9]), 1, var) != 1) {
+        return 1;
+    }
+    ti_Close(var);
+    return 0;
+}
 
+uint8_t TryWriteCurrentSkin(char c_skin[9]) {
+    uint8_t var;
+    var = ti_Open(SKIN_FILE_NAME, FILE_WRITE);
+    if (var == 0) {
+        return 1;
+    }
+    if (ti_Write(c_skin, sizeof(char[9]), 1, var) != 1) {
+        return 1;
+    }
+    ti_SetArchiveStatus(true, var);
+    ti_Close(var);
+    return 0;
+}

@@ -106,7 +106,10 @@ palettes:
       - color: { index: 101, r: 143, g: 130, b: 127 }
       - color: { index: 102, r: 143, g: 132, b: 128 }
       - color: { index: 103, r: 26, g: 13, b: 171 }
-    images: automatic
+    images:
+      - "*.png"
+      - optional_skins/*/*.png
+
 
 converts:
   - name: sprites
@@ -125,20 +128,70 @@ converts:
       - nyancat_10.png
       - nyancat_11.png
       - nyancat_12.png
-      - rainbow.png
-      - T.png
-      - H.png
-      - E.png
-      - N.png
-      - Y.png
-      - A.png
-      - C.png
-      - G.png
-      - M.png
       - health.png
       - shit.png
       - shithead.png
       - head.png
+  - name: pumpkin
+    palette: global_palette
+    transparent-color-index: 0
+    compress: zx0
+    images:
+      - optional_skins/pumpkin/*.png
+  - name: gb
+    palette: global_palette
+    transparent-color-index: 0
+    compress: zx0
+    images:
+      - optional_skins/gb/*.png
+  - name: grumpy
+    palette: global_palette
+    transparent-color-index: 0
+    compress: zx0
+    images:
+      - optional_skins/grumpy/*.png
+  - name: jazz
+    palette: global_palette
+    transparent-color-index: 0
+    compress: zx0
+    images:
+      - optional_skins/jazz/*.png
+  - name: mummy
+    palette: global_palette
+    transparent-color-index: 0
+    compress: zx0
+    images:
+      - optional_skins/mummy/*.png
+  - name: pirate
+    palette: global_palette
+    transparent-color-index: 0
+    compress: zx0
+    images:
+      - optional_skins/pirate/*.png
+  - name: tacnyan
+    palette: global_palette
+    transparent-color-index: 0
+    compress: zx0
+    images:
+      - optional_skins/tacnyan/*.png
+  - name: technyancolor
+    palette: global_palette
+    transparent-color-index: 0
+    compress: zx0
+    images:
+      - optional_skins/technyancolor/*.png
+  - name: vday
+    palette: global_palette
+    transparent-color-index: 0
+    compress: zx0
+    images:
+      - optional_skins/vday/*.png
+  - name: zombie
+    palette: global_palette
+    transparent-color-index: 0
+    compress: zx0
+    images:
+      - optional_skins/zombie/*.png
 
 outputs:
   - type: c
@@ -147,3 +200,113 @@ outputs:
       - global_palette
     converts:
       - sprites
+  - type: appvar
+    name: NyaPumpk
+    include-file: pumpkin.h
+    source-format: c
+    header-string: TINYANSKIN
+    archived: true
+    lut-entries: true
+    palettes:
+      - global_palette
+    converts:
+      - pumpkin
+  - type: appvar
+    name: NyanSkGB
+    include-file: gb.h
+    source-format: c
+    header-string: TINYANSKIN
+    archived: true
+    lut-entries: true
+    palettes:
+      - global_palette
+    converts:
+      - gb
+  - type: appvar
+    name: NyanGrum
+    include-file: grumpy.h
+    source-format: c
+    header-string: TINYANSKIN
+    archived: true
+    lut-entries: true
+    palettes:
+      - global_palette
+    converts:
+      - grumpy
+  - type: appvar
+    name: NyanJazz
+    include-file: jazz.h
+    source-format: c
+    header-string: TINYANSKIN
+    archived: true
+    lut-entries: true
+    palettes:
+      - global_palette
+    converts:
+      - jazz
+  - type: appvar
+    name: NyanMumm
+    include-file: mummy.h
+    source-format: c
+    header-string: TINYANSKIN
+    archived: true
+    lut-entries: true
+    palettes:
+      - global_palette
+    converts:
+      - mummy
+  - type: appvar
+    name: PirNyate
+    include-file: pirate.h
+    source-format: c
+    header-string: TINYANSKIN
+    archived: true
+    lut-entries: true
+    palettes:
+      - global_palette
+    converts:
+      - pirate
+  - type: appvar
+    name: NyanTaco
+    include-file: tacnyan.h
+    source-format: c
+    header-string: TINYANSKIN
+    archived: true
+    lut-entries: true
+    palettes:
+      - global_palette
+    converts:
+      - tacnyan
+  - type: appvar
+    name: NyanTCC
+    include-file: technyancolor.h
+    source-format: c
+    header-string: TINYANSKIN
+    archived: true
+    lut-entries: true
+    palettes:
+      - global_palette
+    converts:
+      - technyancolor
+  - type: appvar
+    name: NyanVDay
+    include-file: vday.h
+    source-format: c
+    header-string: TINYANSKIN
+    archived: true
+    lut-entries: true
+    palettes:
+      - global_palette
+    converts:
+      - vday
+  - type: appvar
+    name: NyanZomb
+    include-file: zombie.h
+    source-format: c
+    header-string: TINYANSKIN
+    archived: true
+    lut-entries: true
+    palettes:
+      - global_palette
+    converts:
+      - zombie

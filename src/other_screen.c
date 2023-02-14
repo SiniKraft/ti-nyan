@@ -35,11 +35,12 @@ bool ShowOtherScreen(gfx_sprite_t *shit_image, BestScoreData *bsd) {
         strcat(killed_built_str, killed_str);
         uint8_t length_k = 0;
         for (; killed_built_str[length_k] != '\0'; length_k++);
-        uint24_t seconds_str_x = ((320 - (strlen(killed_built_str) * 10)) / 2);
+        uint24_t seconds_str_x = ((GFX_LCD_WIDTH - ((strlen(killed_built_str) + 2) * 10)) / 2);  // strlen + 2 = consider shit sprite space (assuming the shit sprite = 10px);
+        // To get the x pos, here we calculate how much space the text width will take (because the length of the string is variable)
 
         PrintScaled("BEST SCORE:", 36, 97, 24, false, 8, 0, true);
-        PrintScaled(bsd->name, ((320 - (strlen(bsd->name) * 16)) / 2), 128, 16, false, 8, 0, false);
-        PrintScaled(seconds_built_str, ((320 - (strlen(seconds_built_str) * 16)) / 2), 146, 16, false, 9, 0, false);
+        PrintScaled(bsd->name, ((GFX_LCD_WIDTH - (strlen(bsd->name) * 16)) / 2), 128, 16, false, 8, 0, false);
+        PrintScaled(seconds_built_str, ((GFX_LCD_WIDTH - (strlen(seconds_built_str) * 16)) / 2), 146, 16, false, 9, 0, false);
         PrintScaled(killed_built_str, seconds_str_x, 165, 10, false, 10, 0, false);
         gfx_TransparentSprite_NoClip(shit_image, seconds_str_x + (length_k * 10) + 10, 163);
     }

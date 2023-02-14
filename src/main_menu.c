@@ -6,6 +6,7 @@
 #include "utils.h"
 #include "gfx/gfx.h"
 #include "other_screen.h"
+#include "skin_selector.h"
 
 bool MainMenu(const int *x, const int *y, uint8_t count, gfx_sprite_t *current_nyan_resized, BestScoreData *bsd) {
     bool continue_loop = true;
@@ -61,18 +62,20 @@ bool MainMenu(const int *x, const int *y, uint8_t count, gfx_sprite_t *current_n
                     exit = true;
                     continue_loop = false;
                 }
-                if (kb_Data[1] == kb_Yequ) {
-                    // CHANGE SKIN
-                    exit = true;
-                    continue_loop = false;
-                }
                 if (!previous_key) {
                     continue_loop = false;
                     previous_key = true;
                     if (kb_Data[1] == kb_Graph) {
                         // OTHER SCREEN
-
                         if (!ShowOtherScreen(shit, bsd)) {
+                            exit = true;
+                            continue_loop = false;
+                        } else {
+                            continue_loop = true;
+                        }
+                    }
+                    if (kb_Data[1] == kb_Yequ) {
+                        if (!SkinSelectorMenu(count, current_nyan_resized, "NyaPumpk")) {
                             exit = true;
                             continue_loop = false;
                         } else {
