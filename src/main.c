@@ -278,6 +278,9 @@ int main(void) {
 
     } while (kb_Data[6] != kb_Clear);
     End();
+    free(shit_resized);
+    free(health_resized);
+    free(current_nyan_resized);
     return 0;
 }
 

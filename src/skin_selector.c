@@ -11,6 +11,7 @@
 #include "main.h"
 #include "utils.h"
 #include "io.h"
+#include "gfx/global_palette.h"
 
 #define HEADER_SIZE 10
 #define DETECT_STRING "TINYANSKIN"
@@ -28,9 +29,15 @@ bool FindSkins(char name[9]) {  // Name can be "" - specified if looking for spe
     }
     char **name_list;
     name_list=(char **)malloc(appvar_num*sizeof(char *));
+    if (name_list == NULL) {
+        return true;
+    }
     for (int i=0;i<appvar_num;i++)
     {
         name_list[i]=(char*)malloc(9*sizeof(char));
+        if (name_list[i] == NULL) {
+            return true;
+        }
     }
 
     vat_ptr = NULL;
@@ -64,10 +71,14 @@ bool FindSkins(char name[9]) {  // Name can be "" - specified if looking for spe
 
         ti_Close(appvar);
         if (strcmp(name_list[i], name) == 0) {
+            gfx_SetPalette(appvar_list[0], 416, 0);
             for (uint8_t y = 0; y < 12; y++) {
                 zx0_Decompress(nyancat_group[y], appvar_list[y + 1]);
             }
         }
+    }
+    for (uint8_t i_=0; i_<appvar_num; i_++) {
+        free(name_list[i_]);
     }
     free(name_list);
     return false;
@@ -124,7 +135,7 @@ bool SkinSelectorMenu(uint8_t count, gfx_sprite_t *current_nyan_resized, char na
             appvar_num++;
         }
     }
-    bool should_refresh_skin = false;
+    bool should_refresh_skin = true;
 
     if (continue_loop) {
         do {
@@ -180,6 +191,12 @@ bool SkinSelectorMenu(uint8_t count, gfx_sprite_t *current_nyan_resized, char na
                         should_refresh_skin = true;
                         continue_loop = true;
                     }
+                    if (kb_Data[1] == kb_Graph) {
+                        TryWriteCurrentSkin("\x81\0");
+                        gfx_End();
+                        os_ClrHome();
+                        os_RunPrgm("TINYAN", NULL, 0, NULL);
+                    }
                 }
             } else {
                 previous_key = false;
@@ -189,7 +206,12 @@ bool SkinSelectorMenu(uint8_t count, gfx_sprite_t *current_nyan_resized, char na
                 if (appvar == 0) {
                     gfx_End();
                     os_ClrHome();
-                    os_ThrowError(OS_E_INVALID);
+                    if (appvar_total == 0) {
+                        strcpy(os_AppErr1, "NoSkinsFound");  // 12 null terminated string
+                        os_ThrowError(OS_E_APPERR1);
+                    } else {
+                        os_ThrowError(OS_E_INVALID);
+                    }
                 }
                 table = base = (char *) ti_GetDataPtr(appvar) + HEADER_SIZE;
                 if (*table != 13) {
@@ -204,12 +226,15 @@ bool SkinSelectorMenu(uint8_t count, gfx_sprite_t *current_nyan_resized, char na
                 }
                 should_refresh_skin = false;
                 TryWriteCurrentSkin(name_list[current_index]);
+                gfx_SetPalette(appvar_list[0], 416, 0);
             }
         } while (continue_loop);
     }
+    for (uint8_t i_=0; i_<appvar_total; i_++) {
+        free(name_list[i_]);
+    }
+    free(name_list);
     return !(exit);
-    // TODO: load palette
-    // TODO: implement default
     // TODO: Redo Sprite
     // TODO: Randomize shit
 }
