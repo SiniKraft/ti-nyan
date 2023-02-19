@@ -1,0 +1,751 @@
+	section	.text,"ax",@progbits
+	assume	adl = 1
+	file	0 "C:\Users\TheKing\Downloads\windows_CEdev_v9.2.1\CEdev\nyan-cat" "src/gfx\NyanGold.c" md5 0x1482fda55a420e8d6aeb93981d31c289
+	file	1 "src/gfx" "NyanGold.c" md5 0x1482fda55a420e8d6aeb93981d31c289
+	section	.text,"ax",@progbits
+	public	_NyanGold_init
+_NyanGold_init:
+	private	func_begin0
+func_begin0:
+	loc	1 9 0
+	cfi_sections .debug_frame
+	cfi_startproc
+	ld	hl, -13
+	call	__frameset
+	private	tmp0
+tmp0:
+	cfi_def_cfa ix, 6
+	cfi_offset ix, -6
+	loc	1 0 0 is_stmt 0
+	ld	hl, _.str
+	ld	de, _.str.1
+	xor	a, a
+	ld	(ix - 1), a
+	loc	1 15 14 prologue_end is_stmt 1
+	push	de
+	push	hl
+	call	_ti_Open
+	private	tmp1
+tmp1:
+	ld	e, a
+	pop	hl
+	pop	hl
+	private	tmp2
+tmp2:
+	loc	1 16 9
+	or	a, a
+	jp	z, BB0_6
+	private	tmp3
+tmp3:
+	loc	1 0 9 is_stmt 0
+	ld	(ix - 4), de
+	loc	1 21 27 is_stmt 1
+	push	de
+	call	_ti_GetDataPtr
+	private	tmp4
+tmp4:
+	push	hl
+	pop	iy
+	pop	hl
+	private	tmp5
+tmp5:
+	loc	1 22 9
+	ld	hl, (iy + 10)
+	private	tmp6
+tmp6:
+	loc	1 22 9 is_stmt 0
+	ld	de, 13
+	or	a, a
+	sbc	hl, de
+	jp	nz, BB0_5
+	private	tmp7
+tmp7:
+	loc	1 0 9
+	ld	a, 1
+	ld	(ix - 1), a
+	ld	(ix - 10), iy
+	lea	hl, iy + 10
+	private	tmp8
+tmp8:
+	ld	(ix - 13), hl
+	private	tmp9
+tmp9:
+	ld	de, 39
+	ld	iy, 0
+	private	tmp10
+tmp10:
+BB0_3:
+	loc	1 28 5 is_stmt 1
+	lea	hl, iy
+	or	a, a
+	sbc	hl, de
+	jp	z, BB0_5
+	private	tmp11
+tmp11:
+	lea	de, iy
+	ld	(ix - 7), iy
+	ld	iy, (ix - 10)
+	private	tmp12
+tmp12:
+	add	iy, de
+	private	tmp13
+tmp13:
+	loc	1 30 38
+	ld	bc, (iy + 13)
+	loc	1 30 47 is_stmt 0
+	ld	iy, (ix - 13)
+	add	iy, bc
+	loc	1 30 28
+	ld	hl, _NyanGold_appvar
+	add	hl, de
+	ld	(hl), iy
+	private	tmp14
+tmp14:
+	loc	1 0 28
+	ld	iy, (ix - 7)
+	private	tmp15
+tmp15:
+	loc	1 28 5 is_stmt 1
+	ld	de, 3
+	add	iy, de
+	private	tmp16
+tmp16:
+	loc	1 0 5 is_stmt 0
+	ld	de, 39
+	jp	BB0_3
+	private	tmp17
+tmp17:
+BB0_5:
+	ld	hl, (ix - 4)
+	push	hl
+	call	_ti_Close
+	private	tmp18
+tmp18:
+	pop	hl
+BB0_6:
+	loc	1 36 1 is_stmt 1
+	ld	a, (ix - 1)
+	ld	sp, ix
+	pop	ix
+	cfi_def_cfa sp, 3
+	cfi_restore ix
+	ret
+	private	tmp19
+tmp19:
+	section	.text,"ax",@progbits
+	private	func_end0
+func_end0:
+	cfi_endproc
+	file	2 "C:\Users\TheKing" "CLionProjects\test\CEdev\include\fileioc.h" md5 0x02b253ac81383d2babebbe188b41a5f7
+	file	3 "C:\Users\TheKing" "CLionProjects\test\CEdev\include\stdint.h" md5 0x6e1e418db59a513b9b4298147e26150f
+
+	section	.rodata,"a",@progbits
+	private	_.str
+_.str:
+	db	"NyanGold", 0
+
+	section	.rodata,"a",@progbits
+	private	_.str.1
+_.str.1:
+	db	"r", 0
+
+	section	.bss,"aw",@nobits
+	public	_NyanGold_appvar
+_NyanGold_appvar:
+	rb	39
+
+	section	.debug_loclists,"",@progbits
+	dd	debug_list_header_end0-debug_list_header_start0
+	private	debug_list_header_start0
+debug_list_header_start0:
+	dw	5
+	db	3
+	db	0
+	dd	4
+	private	loclists_table_base0
+loclists_table_base0:
+	dd	debug_loc0-loclists_table_base0
+	dd	debug_loc1-loclists_table_base0
+	dd	debug_loc2-loclists_table_base0
+	dd	debug_loc3-loclists_table_base0
+	private	debug_loc0
+debug_loc0:
+	db	4
+	uleb128	tmp2-func_begin0
+	uleb128	tmp4-func_begin0
+	db	1
+	db	81
+	db	0
+	private	debug_loc1
+debug_loc1:
+	db	4
+	uleb128	tmp9-func_begin0
+	uleb128	tmp10-func_begin0
+	db	2
+	db	116
+	db	0
+	db	0
+	private	debug_loc2
+debug_loc2:
+	db	4
+	uleb128	tmp9-func_begin0
+	uleb128	tmp17-func_begin0
+	db	2
+	db	116
+	db	0
+	db	0
+	private	debug_loc3
+debug_loc3:
+	db	4
+	uleb128	tmp10-func_begin0
+	uleb128	tmp12-func_begin0
+	db	6
+	db	117
+	db	0
+	db	17
+	db	3
+	db	27
+	db	159
+	db	4
+	uleb128	tmp14-func_begin0
+	uleb128	tmp15-func_begin0
+	db	11
+	db	116
+	db	6
+	db	148
+	db	3
+	db	17
+	db	3
+	db	27
+	db	17
+	db	1
+	db	34
+	db	159
+	db	4
+	uleb128	tmp15-func_begin0
+	uleb128	tmp16-func_begin0
+	db	9
+	db	117
+	db	0
+	db	17
+	db	3
+	db	27
+	db	17
+	db	1
+	db	34
+	db	159
+	db	0
+	private	debug_list_header_end0
+debug_list_header_end0:
+	section	.debug_abbrev,"",@progbits
+	private	abbrev_start0
+abbrev_start0:
+	db	1
+	db	17
+	db	1
+	db	37
+	db	37
+	db	19
+	db	5
+	db	3
+	db	37
+	db	114
+	db	23
+	db	16
+	db	23
+	db	27
+	db	37
+	db	17
+	db	27
+	db	18
+	db	6
+	db	115
+	db	23
+	db	"Œ"
+	db	23
+	db	0
+	db	0
+	db	2
+	db	52
+	db	0
+	db	73
+	db	19
+	db	58
+	db	11
+	db	59
+	db	11
+	db	2
+	db	24
+	db	0
+	db	0
+	db	3
+	db	1
+	db	1
+	db	73
+	db	19
+	db	0
+	db	0
+	db	4
+	db	33
+	db	0
+	db	73
+	db	19
+	db	55
+	db	11
+	db	0
+	db	0
+	db	5
+	db	36
+	db	0
+	db	3
+	db	37
+	db	62
+	db	11
+	db	11
+	db	11
+	db	0
+	db	0
+	db	6
+	db	36
+	db	0
+	db	3
+	db	37
+	db	11
+	db	11
+	db	62
+	db	11
+	db	0
+	db	0
+	db	7
+	db	52
+	db	0
+	db	3
+	db	37
+	db	73
+	db	19
+	db	63
+	db	25
+	db	58
+	db	11
+	db	59
+	db	11
+	db	2
+	db	24
+	db	0
+	db	0
+	db	8
+	db	15
+	db	0
+	db	73
+	db	19
+	db	0
+	db	0
+	db	9
+	db	15
+	db	0
+	db	0
+	db	0
+	db	10
+	db	46
+	db	1
+	db	17
+	db	27
+	db	18
+	db	6
+	db	64
+	db	24
+	db	122
+	db	25
+	db	3
+	db	37
+	db	58
+	db	11
+	db	59
+	db	11
+	db	39
+	db	25
+	db	73
+	db	19
+	db	63
+	db	25
+	db	0
+	db	0
+	db	11
+	db	52
+	db	0
+	db	2
+	db	34
+	db	3
+	db	37
+	db	58
+	db	11
+	db	59
+	db	11
+	db	73
+	db	19
+	db	0
+	db	0
+	db	12
+	db	72
+	db	0
+	db	127
+	db	19
+	db	125
+	db	27
+	db	0
+	db	0
+	db	13
+	db	46
+	db	1
+	db	3
+	db	37
+	db	58
+	db	11
+	db	59
+	db	11
+	db	39
+	db	25
+	db	73
+	db	19
+	db	60
+	db	25
+	db	63
+	db	25
+	db	0
+	db	0
+	db	14
+	db	5
+	db	0
+	db	73
+	db	19
+	db	0
+	db	0
+	db	15
+	db	22
+	db	0
+	db	73
+	db	19
+	db	3
+	db	37
+	db	58
+	db	11
+	db	59
+	db	11
+	db	0
+	db	0
+	db	16
+	db	38
+	db	0
+	db	73
+	db	19
+	db	0
+	db	0
+	db	17
+	db	46
+	db	1
+	db	3
+	db	37
+	db	58
+	db	11
+	db	59
+	db	5
+	db	39
+	db	25
+	db	73
+	db	19
+	db	60
+	db	25
+	db	63
+	db	25
+	db	0
+	db	0
+	db	0
+	section	.debug_info,"",@progbits
+	private	cu_begin0
+cu_begin0:
+	dd	debug_info_end0-debug_info_start0
+	private	debug_info_start0
+debug_info_start0:
+	dw	5
+	db	1
+	db	3
+	dd	abbrev_start0
+	db	1
+	db	0
+	dw	12
+	db	1
+	dd	str_offsets_base0
+	dd	line_table_start0
+	db	2
+	db	3
+	dd	func_end0-func_begin0
+	dd	addr_table_base0
+	dd	loclists_table_base0
+	db	2
+	dd	49
+	db	1
+	db	15
+	db	2
+	db	161
+	db	0
+	db	3
+	dd	61
+	db	4
+	dd	65
+	db	9
+	db	0
+	db	5
+	db	3
+	db	6
+	db	1
+	db	6
+	db	4
+	db	8
+	db	7
+	db	2
+	dd	79
+	db	1
+	db	15
+	db	2
+	db	161
+	db	1
+	db	3
+	dd	61
+	db	4
+	dd	65
+	db	2
+	db	0
+	db	7
+	db	5
+	dd	102
+
+	db	1
+	db	6
+	db	2
+	db	161
+	db	2
+	db	3
+	dd	114
+	db	4
+	dd	65
+	db	13
+	db	0
+	db	8
+	dd	119
+	db	5
+	db	6
+	db	8
+	db	1
+	db	8
+	dd	61
+	db	9
+	db	5
+	db	7
+	db	7
+	db	3
+	db	10
+	db	3
+	dd	func_end0-func_begin0
+	db	1
+	db	84
+
+	db	13
+	db	1
+	db	8
+
+	dd	119
+
+	db	11
+	db	0
+	db	14
+	db	1
+	db	10
+	dd	222
+	db	11
+	db	1
+	db	15
+	db	1
+	db	11
+	dd	273
+	db	11
+	db	2
+	db	16
+	db	1
+	db	12
+	dd	128
+	db	11
+	db	3
+	db	17
+	db	1
+	db	13
+	dd	119
+	db	12
+	dd	203
+	db	4
+	db	12
+	dd	240
+	db	5
+	db	12
+	dd	255
+	db	6
+	db	0
+	db	13
+	db	8
+	db	2
+	db	122
+
+	dd	222
+
+
+	db	14
+	dd	230
+	db	14
+	dd	230
+	db	0
+	db	15
+	dd	119
+	db	9
+	db	3
+	db	11
+	db	8
+	dd	235
+	db	16
+	dd	61
+	db	17
+	db	10
+	db	2
+	dw	424
+
+	dd	128
+
+
+	db	14
+	dd	222
+	db	0
+	db	13
+	db	11
+	db	2
+	db	159
+
+	dd	269
+
+
+	db	14
+	dd	222
+	db	0
+	db	5
+	db	12
+	db	5
+	db	3
+	db	8
+	dd	129
+	db	0
+	private	debug_info_end0
+debug_info_end0:
+	section	.debug_str_offsets,"",@progbits
+	dd	76
+	dw	5
+	dw	0
+	private	str_offsets_base0
+str_offsets_base0:
+	section	.debug_str,"MS",@progbits,1
+	private	info_string0
+info_string0:
+	db	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6d9aa7a16db70f3d02ae304b08d4a03011281fef)", 0
+	private	info_string1
+info_string1:
+	db	"src/gfx\NyanGold.c", 0
+	private	info_string2
+info_string2:
+	db	"C:\Users\TheKing\Downloads\windows_CEdev_v9.2.1\CEdev\nyan-cat", 0
+	private	info_string3
+info_string3:
+	db	"char", 0
+	private	info_string4
+info_string4:
+	db	"__ARRAY_SIZE_TYPE__", 0
+	private	info_string5
+info_string5:
+	db	"NyanGold_appvar", 0
+	private	info_string6
+info_string6:
+	db	"unsigned char", 0
+	private	info_string7
+info_string7:
+	db	"unsigned int", 0
+	private	info_string8
+info_string8:
+	db	"ti_Open", 0
+	private	info_string9
+info_string9:
+	db	"uint8_t", 0
+	private	info_string10
+info_string10:
+	db	"ti_GetDataPtr", 0
+	private	info_string11
+info_string11:
+	db	"ti_Close", 0
+	private	info_string12
+info_string12:
+	db	"int", 0
+	private	info_string13
+info_string13:
+	db	"NyanGold_init", 0
+	private	info_string14
+info_string14:
+	db	"appvar", 0
+	private	info_string15
+info_string15:
+	db	"table", 0
+	private	info_string16
+info_string16:
+	db	"base", 0
+	private	info_string17
+info_string17:
+	db	"i", 0
+	section	.debug_str_offsets,"",@progbits
+	dd	info_string0
+	dd	info_string1
+	dd	info_string2
+	dd	info_string3
+	dd	info_string4
+	dd	info_string5
+	dd	info_string6
+	dd	info_string7
+	dd	info_string8
+	dd	info_string9
+	dd	info_string10
+	dd	info_string11
+	dd	info_string12
+	dd	info_string13
+	dd	info_string14
+	dd	info_string15
+	dd	info_string16
+	dd	info_string17
+	section	.debug_addr,"",@progbits
+	dd	debug_addr_end0-debug_addr_start0
+	private	debug_addr_start0
+debug_addr_start0:
+	dw	5
+	db	3
+	db	0
+	private	addr_table_base0
+addr_table_base0:
+	dl	_.str
+	dl	_.str.1
+	dl	_NyanGold_appvar
+	dl	func_begin0
+	dl	tmp1
+	dl	tmp4
+	dl	tmp18
+	private	debug_addr_end0
+debug_addr_end0:
+	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6d9aa7a16db70f3d02ae304b08d4a03011281fef)"
+	section	.debug_line,"",@progbits
+line_table_start0:
+	extern	__Unwind_SjLj_Register
+	extern	__Unwind_SjLj_Unregister
+	extern	__frameset
+	extern	_ti_Open
+	extern	_ti_GetDataPtr
+	extern	_ti_Close

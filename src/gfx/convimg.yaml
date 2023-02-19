@@ -1,6 +1,6 @@
 palettes:
   - name: global_palette
-    max-entries: 255
+    max-entries: 254
     fixed-entries:
       - color: { index: 0, r: 17, g: 0, b: 255 }
       - color: { index: 1, r: 255, g: 255, b: 255 }
@@ -192,6 +192,12 @@ converts:
     compress: zx0
     images:
       - optional_skins/zombie/*.png
+  - name: gold
+    palette: global_palette
+    transparent-color-index: 0
+    compress: zx0
+    images:
+      - optional_skins/gold/*.png
 
 outputs:
   - type: c
@@ -310,3 +316,14 @@ outputs:
       - global_palette
     converts:
       - zombie
+  - type: appvar
+    name: NyanGold
+    include-file: gold.h
+    source-format: c
+    header-string: TINYANSKIN
+    archived: true
+    lut-entries: true
+    palettes:
+      - global_palette
+    converts:
+      - gold

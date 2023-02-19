@@ -71,10 +71,10 @@ bool FindSkins(char name[9]) {  // Name can be "" - specified if looking for spe
 
         ti_Close(appvar);
         if (strcmp(name_list[i], name) == 0) {
-            gfx_SetPalette(appvar_list[0], 416, 0);
             for (uint8_t y = 0; y < 12; y++) {
                 zx0_Decompress(nyancat_group[y], appvar_list[y + 1]);
             }
+            gfx_SetPalette(appvar_list[0], 510, 0);
         }
     }
     for (uint8_t i_=0; i_<appvar_num; i_++) {
@@ -226,7 +226,7 @@ bool SkinSelectorMenu(uint8_t count, gfx_sprite_t *current_nyan_resized, char na
                 }
                 should_refresh_skin = false;
                 TryWriteCurrentSkin(name_list[current_index]);
-                gfx_SetPalette(appvar_list[0], 416, 0);
+                gfx_SetPalette(appvar_list[0], 510, 0);
             }
         } while (continue_loop);
     }
@@ -237,4 +237,5 @@ bool SkinSelectorMenu(uint8_t count, gfx_sprite_t *current_nyan_resized, char na
     return !(exit);
     // TODO: Redo Sprite
     // TODO: Randomize shit
+    // TODO: Skin maker
 }

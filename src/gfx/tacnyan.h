@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 
-#define sizeof_global_palette 416
+#define sizeof_global_palette 508
 #define global_palette (NyanTaco_appvar[0])
 #define tacnyan_palette_offset 0
 #define tacnyan_000_width 34

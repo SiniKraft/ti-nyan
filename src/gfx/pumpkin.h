@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 
-#define sizeof_global_palette 416
+#define sizeof_global_palette 508
 #define global_palette (NyaPumpk_appvar[0])
 #define pumpkin_palette_offset 0
 #define pumpkin_000_width 34

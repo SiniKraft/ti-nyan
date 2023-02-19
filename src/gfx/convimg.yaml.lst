@@ -63,3 +63,6 @@ NyanVDay.8xv
 zombie.h
 NyanZomb.c
 NyanZomb.8xv
+gold.h
+NyanGold.c
+NyanGold.8xv

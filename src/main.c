@@ -67,9 +67,6 @@ int main(void) {
     timer_SetReload(2, TIME_2);
     char file_name[9] = "\x81\0";
     TryReadCurrentSkin(file_name);
-    if (file_name[0] != EXIT_CHAR) {
-        FindSkins(file_name);
-    }
 
     gfx_sprite_t* shit_resized = gfx_MallocSprite(26, 26);
     gfx_sprite_t* health_resized = gfx_MallocSprite(27, 24);
@@ -91,6 +88,9 @@ int main(void) {
     /* Set the palette for the sprites */
     gfx_SetPalette(global_palette, sizeof_global_palette, 0);
     gfx_SetTransparentColor(0);
+    if (file_name[0] != EXIT_CHAR) {
+        FindSkins(file_name);
+    }
     /* Draw to the offscreen buffer */
     gfx_SetDrawBuffer();
     gfx_FillScreen(14);
@@ -309,8 +309,10 @@ void DrawSprite(int x, int y, int frame, uint8_t *shitted_face, gfx_sprite_t *cu
     if (*shitted_face > 0) {
         uint8_t factor_x = 36;
         uint8_t factor_y = 12;
-        if (frame > 2) {
+        if (frame > 1) {
             factor_x = 38;
+        }
+        if (frame > 2) {
             factor_y = 14;
         }
         if (frame > 4) {
