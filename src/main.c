@@ -7,7 +7,6 @@
 #include <ti/error.h>
 #include <ti/screen.h>
 #include <string.h>
-#include <debug.h>
 #include "gfx/gfx.h"
 #include "bg.h"
 #include "main_menu.h"
@@ -116,7 +115,7 @@ int main(void) {
         }
     }
 
-    if (!MainMenu(&x, &y, count, current_nyan_resized, &bsd)) {
+    if (!MainMenu(&x, &y, count, current_nyan_resized, &bsd, file_name)) {
         End();
         return 0;
     }
@@ -129,16 +128,14 @@ int main(void) {
     uint8_t health_count = 3;
     LaserList laser_list;
     laser_list.length = 2;
-    laser_list.list[0].defined = false;
-    laser_list.list[1].defined = false;
-    laser_list.list[2].defined = false;
+    for (uint8_t li = 0; li < laser_list.length; li++) {
+        laser_list.list[li].defined = false;
+    }
     ShitterList shitter_list;
-    shitter_list.list[0].defined = false;
-    shitter_list.list[1].defined = false;
-    shitter_list.list[2].defined = false;
-    shitter_list.list[3].defined = false;
-    shitter_list.list[4].defined = false;  // Ensuring memory is set
     shitter_list.length = 5;
+    for (uint8_t si = 0; si < shitter_list.length; si++) {
+        shitter_list.list[si].defined = false;
+    }
     shitter_list.delay = 0;
     uint24_t destroyed_shitters = 0;
     char score_str[] = "00000000";
@@ -159,17 +156,15 @@ int main(void) {
                 seconds = 0;
                 deciseconds = 0;
                 health_count = 3;
-                laser_list.list[0].defined = false;
-                laser_list.list[1].defined = false;
-                laser_list.list[2].defined = false;
-                shitter_list.list[0].defined = false;
-                shitter_list.list[1].defined = false;
-                shitter_list.list[2].defined = false;
-                shitter_list.list[3].defined = false;
-                shitter_list.list[4].defined = false;
+                for (uint8_t li = 0; li < laser_list.length; li++) {
+                    laser_list.list[li].defined = false;
+                }
+                for (uint8_t si = 0; si < shitter_list.length; si++) {
+                    shitter_list.list[si].defined = false;
+                }
                 shitter_list.delay = 0;
                 destroyed_shitters = 0;
-                if (!MainMenu(&x, &y, count, current_nyan_resized, &bsd)) {
+                if (!MainMenu(&x, &y, count, current_nyan_resized, &bsd, file_name)) {
                     End();
                     return 0;
                 }

@@ -1,27 +1,28 @@
 #include <graphx.h>
+#include <debug.h>
 #include "shitter.h"
-#include "gfx/gfx.h"
 #include "laser.h"
+#include "sys/util.h"
 
-uint8_t randUInt(uint8_t max) {
-    return (uint8_t)(rand() % (max + 1));  // return random unsigned int8 between 0 and max (inclusive)
-}
+// uint8_t randUInt(uint8_t max) {
+//     return (uint8_t)(rand() % (max + 1));  // return random unsigned int8 between 0 and max (inclusive)
+// }
 
 void ShitterIAStep(ShitterList* sl, uint24_t seconds, LaserList* ll, const gfx_sprite_t* shit_resized, uint8_t* shitted_face, uint8_t* health_count, const int* x, const int* y, bool* died, uint24_t* killed) {
     // Adding 1 to global delay - used to wait before spawning a new shitter
     uint8_t second = (uint8_t)seconds;
     uint8_t to_wait = 40;
     if (seconds > 10) {
-        to_wait = 30;
-    }
-    if (seconds > 30) {
         to_wait = 20;
     }
-    if (seconds > 45) {
+    if (seconds > 30) {
         to_wait = 10;
     }
-    if (seconds > 60) {
+    if (seconds > 45) {
         to_wait = 5;
+    }
+    if (seconds > 60) {
+        to_wait = 3;
     }
     if (seconds > 255) {
         second = 255;
@@ -49,13 +50,13 @@ void ShitterIAStep(ShitterList* sl, uint24_t seconds, LaserList* ll, const gfx_s
                     }
                     sl->list[i].defined = true;
                     sl->list[i].x = 290;
-                    sl->list[i].y = randUInt(209) + 1;
-                    sl->list[i].angle = randUInt(255);
+                    sl->list[i].y = randInt(1, 210);  // Prevent spawning and immediately being killed
+                    sl->list[i].angle = randInt(0, 255);
                     sl->list[i].x_step = speed;
-                    sl->list[i].y_step = 0;
-                    sl->list[i].angle_step = (int8_t)randUInt(24);
+                    sl->list[i].angle_step = randInt(-24, 24);
                     sl->list[i].size = 160;
                     sl->list[i].step = 0;
+                    sl->list[i].y_step = (int8_t)((int24_t)((randInt(1, 210) - sl->list[i].y)) / (320/sl->list[i].x_step*-1));
                 }
             }
         }

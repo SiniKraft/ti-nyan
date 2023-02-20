@@ -11,7 +11,6 @@
 #include "main.h"
 #include "utils.h"
 #include "io.h"
-#include "gfx/global_palette.h"
 
 #define HEADER_SIZE 10
 #define DETECT_STRING "TINYANSKIN"
@@ -109,13 +108,19 @@ bool SkinSelectorMenu(uint8_t count, gfx_sprite_t *current_nyan_resized, char na
         if (var_name != NULL) {
             appvar_total++;
         }
-    }
+    }  // Get how many skins
     char **name_list;
     name_list=(char **)malloc(appvar_total*sizeof(char *));
+    if (name_list == NULL) {
+        return false;
+    }
     for (int i=0;i<appvar_total;i++)
     {
         name_list[i]=(char*)malloc(9*sizeof(char));
-    }
+        if (name_list[i] == NULL) {
+            return false;
+        }
+    }  // Allocating enough space to hold a list of the skins file name
 
     vat_ptr = NULL;
     appvar_num = 0;
@@ -124,7 +129,7 @@ bool SkinSelectorMenu(uint8_t count, gfx_sprite_t *current_nyan_resized, char na
             strcpy(name_list[appvar_num], var_name);
             appvar_num++;
         }
-    }
+    }  // Filling up the list
     vat_ptr = NULL;
     appvar_num = 0;
     while ((var_name = ti_Detect(&vat_ptr, DETECT_STRING))) {
@@ -193,6 +198,7 @@ bool SkinSelectorMenu(uint8_t count, gfx_sprite_t *current_nyan_resized, char na
                     }
                     if (kb_Data[1] == kb_Graph) {
                         TryWriteCurrentSkin("\x81\0");
+                        strcpy(name, "\x81\0");
                         gfx_End();
                         os_ClrHome();
                         os_RunPrgm("TINYAN", NULL, 0, NULL);
@@ -226,6 +232,7 @@ bool SkinSelectorMenu(uint8_t count, gfx_sprite_t *current_nyan_resized, char na
                 }
                 should_refresh_skin = false;
                 TryWriteCurrentSkin(name_list[current_index]);
+                strcpy(name, name_list[current_index]);
                 gfx_SetPalette(appvar_list[0], 510, 0);
             }
         } while (continue_loop);
@@ -235,7 +242,4 @@ bool SkinSelectorMenu(uint8_t count, gfx_sprite_t *current_nyan_resized, char na
     }
     free(name_list);
     return !(exit);
-    // TODO: Redo Sprite
-    // TODO: Randomize shit
-    // TODO: Skin maker
 }

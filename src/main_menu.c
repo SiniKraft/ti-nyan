@@ -8,7 +8,8 @@
 #include "other_screen.h"
 #include "skin_selector.h"
 
-bool MainMenu(const int *x, const int *y, uint8_t count, gfx_sprite_t *current_nyan_resized, BestScoreData *bsd) {
+bool MainMenu(const int *x, const int *y, uint8_t count, gfx_sprite_t *current_nyan_resized, BestScoreData *bsd,
+              char skin_name[9]) {
     bool continue_loop = true;
     bool exit = false;
     bool previous_key = false;  // used to prevent the died screen from being skipped by a key not picked up !
@@ -75,7 +76,7 @@ bool MainMenu(const int *x, const int *y, uint8_t count, gfx_sprite_t *current_n
                         }
                     }
                     if (kb_Data[1] == kb_Yequ) {
-                        if (!SkinSelectorMenu(count, current_nyan_resized, "NyaPumpk")) {
+                        if (!SkinSelectorMenu(count, current_nyan_resized, skin_name)) {
                             exit = true;
                             continue_loop = false;
                         } else {

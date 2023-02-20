@@ -15,9 +15,6 @@ obj/src/main.c.src: src\main.c \
   C:\Users\TheKing\CLionProjects\test\CEdev\include\stddef.h \
   C:\Users\TheKing\CLionProjects\test\CEdev\include\ti\ui.h \
   C:\Users\TheKing\CLionProjects\test\CEdev\include\string.h \
-  C:\Users\TheKing\CLionProjects\test\CEdev\include\debug.h \
-  C:\Users\TheKing\CLionProjects\test\CEdev\include\stdio.h \
-  C:\Users\TheKing\CLionProjects\test\CEdev\include\stdarg.h \
   src\gfx\gfx.h src\gfx\global_palette.h src\gfx\nyancat_1.h \
   src\gfx\nyancat_2.h src\gfx\nyancat_3.h src\gfx\nyancat_4.h \
   src\gfx\nyancat_5.h src\gfx\nyancat_6.h src\gfx\nyancat_7.h \

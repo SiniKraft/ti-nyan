@@ -28,7 +28,6 @@ typedef struct {
 } ShitterList;
 
 extern void ShitterIAStep(ShitterList* sl, uint24_t seconds, LaserList* ll, const gfx_sprite_t* shit_resized, uint8_t* shitted_face, uint8_t* health_count, const int* x, const int* y, bool* died, uint24_t* killed);
-extern uint8_t randUInt(uint8_t max);
 
 #ifdef __cplusplus
 }
