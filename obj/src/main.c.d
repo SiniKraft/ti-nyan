@@ -1,4 +1,4 @@
-obj/src/main.c.src: src\main.c \
+obj/src/main.c.bc: src\main.c \
   C:\Users\TheKing\CLionProjects\test\CEdev\include\graphx.h \
   C:\Users\TheKing\CLionProjects\test\CEdev\include\stdint.h \
   C:\Users\TheKing\CLionProjects\test\CEdev\include\cdefs.h \

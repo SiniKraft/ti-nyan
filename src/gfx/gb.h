@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 
-#define sizeof_global_palette 508
+#define sizeof_global_palette 342
 #define global_palette (NyanSkGB_appvar[0])
 #define gb_palette_offset 0
 #define gb_000_width 34

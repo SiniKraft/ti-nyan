@@ -329,7 +329,7 @@ void DrawSprite(int x, int y, int frame, uint8_t *shitted_face, gfx_sprite_t *cu
             factor_y = 12;
         }
         gfx_ScaledTransparentSprite_NoClip(shithead, x + factor_x, y + factor_y, 2, 2);
-        gfx_SetColor(21);
+        gfx_SetColor(38);
         if (*shitted_face > 94) {
             uint8_t width = 6;
             if (*shitted_face > 98) {

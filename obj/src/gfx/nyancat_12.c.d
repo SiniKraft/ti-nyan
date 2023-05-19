@@ -1,1 +1,1 @@
-obj/src/gfx/nyancat_12.c.src: src\gfx\nyancat_12.c
+obj/src/gfx/nyancat_12.c.bc: src\gfx\nyancat_12.c

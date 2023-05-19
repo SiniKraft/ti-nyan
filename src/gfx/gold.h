@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 
-#define sizeof_global_palette 508
+#define sizeof_global_palette 342
 #define global_palette (NyanGold_appvar[0])
 #define gold_palette_offset 0
 #define gold_000_width 34

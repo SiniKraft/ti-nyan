@@ -1,4 +1,4 @@
-obj/src/io.c.src: src\io.c \
+obj/src/io.c.bc: src\io.c \
   C:\Users\TheKing\CLionProjects\test\CEdev\include\fileioc.h \
   C:\Users\TheKing\CLionProjects\test\CEdev\include\stdint.h \
   C:\Users\TheKing\CLionProjects\test\CEdev\include\cdefs.h \

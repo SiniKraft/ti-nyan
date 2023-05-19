@@ -1,4 +1,4 @@
-obj/src/gfx/NyanGold.c.src: src\gfx\NyanGold.c src\gfx\gold.h \
+obj/src/gfx/NyanGold.c.bc: src\gfx\NyanGold.c src\gfx\gold.h \
   C:\Users\TheKing\CLionProjects\test\CEdev\include\fileioc.h \
   C:\Users\TheKing\CLionProjects\test\CEdev\include\stdint.h \
   C:\Users\TheKing\CLionProjects\test\CEdev\include\cdefs.h \

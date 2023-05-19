@@ -1,4 +1,3 @@
-#include <cdefs.h>
 #include <fileioc.h>
 #include <string.h>
 #include <graphx.h>

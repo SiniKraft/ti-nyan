@@ -1,4 +1,4 @@
-obj/src/best_score.c.src: src\best_score.c \
+obj/src/best_score.c.bc: src\best_score.c \
   C:\Users\TheKing\CLionProjects\test\CEdev\include\keypadc.h \
   C:\Users\TheKing\CLionProjects\test\CEdev\include\stdint.h \
   C:\Users\TheKing\CLionProjects\test\CEdev\include\cdefs.h \

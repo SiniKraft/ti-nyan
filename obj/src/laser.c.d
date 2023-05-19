@@ -1,4 +1,4 @@
-obj/src/laser.c.src: src\laser.c \
+obj/src/laser.c.bc: src\laser.c \
   C:\Users\TheKing\CLionProjects\test\CEdev\include\graphx.h \
   C:\Users\TheKing\CLionProjects\test\CEdev\include\stdint.h \
   C:\Users\TheKing\CLionProjects\test\CEdev\include\cdefs.h \

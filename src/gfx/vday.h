@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 
-#define sizeof_global_palette 508
+#define sizeof_global_palette 342
 #define global_palette (NyanVDay_appvar[0])
 #define vday_palette_offset 0
 #define vday_000_width 34

@@ -1,4 +1,4 @@
-obj/src/utils.c.src: src\utils.c \
+obj/src/utils.c.bc: src\utils.c \
   C:\Users\TheKing\CLionProjects\test\CEdev\include\graphx.h \
   C:\Users\TheKing\CLionProjects\test\CEdev\include\stdint.h \
   C:\Users\TheKing\CLionProjects\test\CEdev\include\cdefs.h \
