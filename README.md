@@ -3,7 +3,7 @@ TI-Nyan is a small game in which you are a nyan cat avoiding flying shits.
 Try to survive as long as possible !  Fire up lasers to help you !  
 This game is focused on optimization, especially at the start of the game.  
   
-![Gameplay demonstration](https://github.com/SiniKraft/ti-nyan/assets/65973766/b5c48b92-722b-4609-94a2-1b492cd3fec4)
+![Gameplay demonstration](https://github.com/SiniKraft/ti-nyan/assets/65973766/f38f822e-6729-424b-9b6f-43ef34626ff2)
 ## Installation : 
 Download the zip provided in the [latest release tab](https://github.com/SiniKraft/ti-nyan/releases), and follow the README instructions.
 ## Requirements :
@@ -21,4 +21,4 @@ The game supports loading of optional skins.
 Some skins are already included by default in the release zip.  
 You can also make your own skins with the kit included in this release zip.  
   
-![List of the skins included in the game](https://github.com/SiniKraft/ti-nyan/assets/65973766/44870528-dec7-46ea-b557-e9abbb3c3ba9)
+![List of the skins included in the game](https://github.com/SiniKraft/ti-nyan/assets/65973766/6e6f70d9-0397-4c1a-aa95-9758e203ee6f)
