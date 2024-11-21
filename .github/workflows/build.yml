@@ -26,6 +26,11 @@ jobs:
         run: |
           echo "$GITHUB_WORKSPACE/CEdev/bin" >> $GITHUB_PATH
 
+      - name: Remove old build files
+        run: |
+          rm -rfv obj/
+          rm -rfv bin/
+
       - name: Build Project
         run: make
 
