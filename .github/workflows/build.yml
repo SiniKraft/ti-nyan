@@ -26,6 +26,12 @@ jobs:
       - name: Add to Path
         run: export PATH=$GITHUB_WORKSPACE/CEdev/bin:$PATH
 
+      - name: Debug
+        run: |
+          ls
+          where make
+          export PATH=$GITHUB_WORKSPACE/CEdev/bin:$CEDEV
+
       - name: Build Project
         run: make
 
